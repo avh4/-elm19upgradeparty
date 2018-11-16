@@ -27,6 +27,8 @@ consider joining me in donating to this week's chosen charity,
 
 We'll have the following events happening on twitch stream <https://twitch.tv/avh4>:
 
+<p class="no-js">(Enable javascript to see times in your local timezone.)</p>
+
 - <b class="schedule"><time datetime="2018-11-17T17:00Z">5:00pm GMT</time></b> Welcome! and an overview of new features in Elm 0.19
 - <b class="schedule"></b> upgrading [elm-program-test] and answering questions
 - <b class="schedule"><time datetime="2018-11-17T17:30Z">5:30 pm GMT</time></b> (possible pair programming with surprise guest)
@@ -82,6 +84,10 @@ $('time').each(function() {
   var t = moment($(this).attr("datetime"));
   var localtime = t.format('LT ').toLowerCase() + timezone;
   $(this).text(localtime);
+});
+
+$('.no-js').each(function() {
+  $(this).remove();
 });
 </script>
 
