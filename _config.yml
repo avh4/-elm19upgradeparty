@@ -1,1 +1,6 @@
 theme: jekyll-theme-cayman
+title: "🎉 #elm19upgradeparty 🎉"
+description: Saturday, Nov 17th, 9am-noon PST / noon-3pm EST / 5pm-8pm GMT
+github:
+  is_project_page: false
+show_downloads: false
