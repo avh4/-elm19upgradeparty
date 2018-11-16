@@ -21,6 +21,8 @@ consider joining me in donating to this week's chosen charity,
 
 [Donate here!](https://www.anniecannons.com/donate)
 
+<a name="schedule"></a>
+
 # Livestream Schedule
 
 We'll have the following events happening on twitch stream <https://twitch.tv/avh4>:
