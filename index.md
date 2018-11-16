@@ -1,7 +1,8 @@
 ## It's an Elm 0.19 upgrade party!
 
 I'll be streaming on November 17th between 9am-noon PST / noon-3pm EST / 5pm-8pm GMT
-upgrading some of my own packages, help out viewers with their upgrade questions,
+upgrading some of my own packages,
+helping out viewers with their upgrade questions,
 and interviewing and pair programming with special guests!
 
 We'll also have folks available on the [elm-lang slack](https://elmlang.herokuapp.com/) to
@@ -13,12 +14,16 @@ tune in and join us!
 
 # Support our charity of the week
 
-If you'd like to support our chosen charity, you can donate to support [AnnieCannons],
-an non-profit organization working to transform survivors of human trafficking into software professionals.  [Donate here!](https://www.anniecannons.com/donate)
+If, like me, you are fortunate enough to have a well-paying tech job
+and can afford to do so,
+consider joining me in donating to this week's chosen charity,
+[AnnieCannons], a non-profit organization working to transform survivors of human trafficking into software professionals.
+
+[Donate here!](https://www.anniecannons.com/donate)
 
 # Livestream Schedule
 
-We'll have the following events happening on Aaron's twitch stream <https://twitch.tv/avh4>:
+We'll have the following events happening on twitch stream <https://twitch.tv/avh4>:
 
 - <b class="schedule"><time datetime="2018-11-17T17:00Z">5:00pm GMT</time></b> Welcome! and an overview of new features in Elm 0.19
 - <b class="schedule"></b> upgrading [elm-program-test] and answering questions
@@ -46,7 +51,9 @@ We'll have the following events happening on Aaron's twitch stream <https://twit
 [elm-benchmark]: https://package.elm-lang.org/packages/BrianHicks/elm-benchmark/latest
 [elm-readiness]: https://kraklin.github.io/elm-readiness/
 
-## Live stream
+## Livestream
+
+Tune in on Saturday, Nov 17th at <time datetime="2018-11-17T17:00Z">5:00pm GMT</time>, or [follow me on twitch](https://twitch.tv/avh4) to receive a notification when the stream starts.
 
 <div id="twitch-embed"></div>
 
