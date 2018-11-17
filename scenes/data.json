@@ -2,24 +2,28 @@
   "title": "🎉 #elm19upgradeparty 🎉",
   "summary": "hang out with us and upgrade projects to Elm 0.19 -- feel free to ask questions!",
   "schedule": {
+    "past": [
+      {}
+    ],
     "upcoming": [
-      { "description": "Welcome! and an overview of new features in Elm 0.19" },
+      { "time": "9:00 PST", "description": "Welcome! and an overview of new features in Elm 0.19" },
       { "description": "upgrading elm-program-test and answering questions" },
-      { "description": "9:30 PST: (possible pair programming with surprise guest)" },
+      { "time": "9:30 PST", "description": "(possible pair programming with surprise guest)" },
 
-      { "description": "10:00 PST: info about AnnieCannons (with possible special guest)" },
+      { "time": "10:00 PST", "description": "info about AnnieCannons (with possible special guest)" },
       { "description": "upgrading elm-dropbox and answering questions" },
-      { "description": "10:30 PST: lessons from upgrading large codebases to Elm 0.19 w/ Luke and Martin" },
+      { "time": "10:30 PST", "description": "lessons from upgrading large codebases to Elm 0.19 w/ Luke and Martin" },
       { "description": "continuing to upgrade packages, pairing w/ Luke" },
 
-      { "description": "11:15 PST: demo of [elm-benchmark] w/ Brian" },
+      { "time": "11:15 PST", "description": "demo of elm-benchmark w/ Brian" },
       { "description": "(possible pair programming w/ Brian)" },
       { "description": "upgrading packages and answering questions" },
-      { "description": "11:45 PST: (possible demo of elm-readiness with Tomáš)" }
+      { "time": "11:45 PST", "description": "(possible demo of elm-readiness with Tomáš)" }
     ]
   },
   "charity": {
     "name": "AnnieCannons",
+    "description": "Transforming survivors of human trafficking into software professionals",
     "donateLink": "https://is.gd/jojipi"
   }
 }

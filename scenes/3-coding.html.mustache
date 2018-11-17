@@ -16,7 +16,7 @@
 
             <ul class="schedule">
               {{#upcoming}}
-                <li>{{description}}</li>
+                <li>{{#time}}{{time}}: {{/time}}{{description}}</li>
               {{/upcoming}}
             </ul>
           {{/schedule}}

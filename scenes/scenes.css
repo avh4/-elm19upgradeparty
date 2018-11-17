@@ -50,6 +50,24 @@ ul.schedule li:first-child {
   color: #fdbcff;
 }
 
+ul.large-schedule {
+  padding-left: 10em;
+  padding-right: 8em;
+  margin-top: 20px;
+  font-size: 22px;
+}
+
+ul.large-schedule li {
+  margin-bottom: 15px;
+  position: relative;
+}
+
+ul.large-schedule b.schedule {
+  display: inline-block;
+  position: absolute;
+  left: -6.5em;
+}
+
 .fade-bottom {
   -webkit-mask-image: -webkit-gradient(linear, left 50%, left bottom, color-stop(80%, rgba(0,0,0,1)), to(rgba(0,0,0,0)));
 }
