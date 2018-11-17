@@ -20,6 +20,11 @@
   border: 1px solid gray;
 }
 
+.area {
+  border-radius: 10px;
+  background-color: rgba(0, 0, 0, 0.7);
+}
+
 a {
   color: #b9dcff;
 }
