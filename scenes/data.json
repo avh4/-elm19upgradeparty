@@ -1,0 +1,25 @@
+{
+  "title": "🎉 #elm19upgradeparty 🎉",
+  "summary": "hang out with us and upgrade projects to Elm 0.19 -- feel free to ask questions!",
+  "schedule": {
+    "upcoming": [
+      { "description": "Welcome! and an overview of new features in Elm 0.19" },
+      { "description": "upgrading elm-program-test and answering questions" },
+      { "description": "9:30 PST: (possible pair programming with surprise guest)" },
+
+      { "description": "10:00 PST: info about AnnieCannons (with possible special guest)" },
+      { "description": "upgrading elm-dropbox and answering questions" },
+      { "description": "10:30 PST: lessons from upgrading large codebases to Elm 0.19 w/ Luke and Martin" },
+      { "description": "continuing to upgrade packages, pairing w/ Luke" },
+
+      { "description": "11:15 PST: demo of [elm-benchmark] w/ Brian" },
+      { "description": "(possible pair programming w/ Brian)" },
+      { "description": "upgrading packages and answering questions" },
+      { "description": "11:45 PST: (possible demo of elm-readiness with Tomáš)" }
+    ]
+  },
+  "charity": {
+    "name": "AnnieCannons",
+    "donateLink": "https://is.gd/jojipi"
+  }
+}
