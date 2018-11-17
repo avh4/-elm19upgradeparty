@@ -51,7 +51,7 @@ ul.schedule li:first-child {
 }
 
 .fade-bottom {
-  -webkit-mask-image: -webkit-gradient(linear, left 50%, left bottom, color-stop(90%, rgba(0,0,0,1)), to(rgba(0,0,0,0)));
+  -webkit-mask-image: -webkit-gradient(linear, left 50%, left bottom, color-stop(80%, rgba(0,0,0,1)), to(rgba(0,0,0,0)));
 }
 
 .dim {
