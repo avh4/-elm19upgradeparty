@@ -1,14 +1,6 @@
 <!DOCTYPE html>
 <html lang="en-US"">
-  <head>
-    <meta charset="UTF-8">
-
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="theme-color" content="#157878">
-    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-    <link rel="stylesheet" href="../_site/assets/css/style.css">
-    <link rel="stylesheet" href="./scenes.css">
-  </head>
+  {{> head}}
   <body>
     <main class="main-scene" role="main">
       <div id="screen" class="placeholder positioned" style="width: 900px; height: 720px;"></div>
@@ -30,12 +22,7 @@
           {{/schedule}}
         </div>
 
-        {{#charity}}
-          <div class="positioned" style="bottom: 0; height: 90px; font-size: 20px; padding: 20px">
-            <span class="dim">Today's charity:</span> {{name}}<br/>
-            <span class="dim">Donate at</dim> <a>{{donateLink}}</a>
-          </div>
-        {{/charity}}
+        {{> charity}}
       </div>
     </main>
   </body>
