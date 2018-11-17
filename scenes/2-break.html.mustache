@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en-US"">
+  {{>head}}
+  <body>
+    <main class="main-scene gradient" role="main">
+      <div class="positioned" style="width: 320px; height: 100%">
+        <div style="padding: 100px 40px 100px 20px; font-size: 20px">
+          {{summary}}
+
+          <br/><br/><br/>
+          Elm 0.19 upgrade guide: <a>https://is.gd/xakovu</a>
+        </div>
+
+        {{#charity}}
+          <div class="positioned" style="bottom: 0; height: 140px; font-size: 20px; padding: 10px">
+            <span class="dim">Today's charity:</span> {{name}}<br/>
+            <div style="font-size:80%; line-height:1.1; padding: 5px">
+              <i>{{description}}</i>
+            </div>
+            <span class="dim">Donate at</dim> <a>{{donateLink}}</a>
+          </div>
+        {{/charity}}
+      </div>
+      <div class="positioned fade-bottom" style="left: 320px;">
+        <h1 class="project-name">{{title}}</h1>
+
+        <h2>On a short break</h2>
+
+        {{#schedule}}
+          <h3>Up next:</h3>
+
+          <ul class="large-schedule highlight-first">
+            {{#upcoming}}
+              <li><b class="schedule">{{time}}</b> {{description}}</li>
+            {{/upcoming}}
+          </ul>
+        {{/schedule}}
+      </div>
+    </main>
+  </body>
+</html>
