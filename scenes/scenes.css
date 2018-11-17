@@ -4,9 +4,12 @@
   height: 720px;
 
   color: #fff;
+  font-size: 30px;
+}
+
+.gradient {
   background-color: #159957;
   background-image: linear-gradient(140deg, #155799, #159957);
-  font-size: 30px;
 }
 
 .positioned {
