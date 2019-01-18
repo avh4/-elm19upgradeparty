@@ -3,21 +3,20 @@
   "summary": "hang out with us and upgrade projects to Elm 0.19 -- feel free to ask questions!",
   "schedule": {
     "past": [
+      { "time": "9:00 PST", "description": "Welcome! and an overview of new features in Elm 0.19" },
+      { "time": "9:30 PST", "description": "(possible pair programming with surprise guest)" },
+      { "description": "upgrading elm-dropbox and answering questions" },
+      { "time": "10:10 PST", "description": "info about AnnieCannons (with possible special guest)" },
+      { "time": "10:10 PST", "description": "info about AnnieCannons" },
+      { "description": "upgrading elm-program-test and answering questions" },
+      { "time": "10:30 PST", "description": "lessons from upgrading large codebases to Elm 0.19 w/ Luke and Martin" },
+      { "description": "continuing to upgrade packages, pairing w/ Luke" },
+      { "description": "(possible pair programming w/ Brian)" },
+      { "description": "upgrading packages and answering questions" },
+      { "time": "11:15 PST", "description": "demo of elm-benchmark w/ Brian" },
       {}
     ],
     "upcoming": [
-      { "time": "9:00 PST", "description": "Welcome! and an overview of new features in Elm 0.19" },
-      { "description": "upgrading elm-program-test and answering questions" },
-      { "time": "9:30 PST", "description": "(possible pair programming with surprise guest)" },
-
-      { "time": "10:00 PST", "description": "info about AnnieCannons (with possible special guest)" },
-      { "description": "upgrading elm-dropbox and answering questions" },
-      { "time": "10:30 PST", "description": "lessons from upgrading large codebases to Elm 0.19 w/ Luke and Martin" },
-      { "description": "continuing to upgrade packages, pairing w/ Luke" },
-
-      { "time": "11:15 PST", "description": "demo of elm-benchmark w/ Brian" },
-      { "description": "(possible pair programming w/ Brian)" },
-      { "description": "upgrading packages and answering questions" },
       { "time": "11:45 PST", "description": "(possible demo of elm-readiness with Tomáš)" }
     ]
   },
@@ -25,5 +24,10 @@
     "name": "AnnieCannons",
     "description": "Transforming survivors of human trafficking into software professionals",
     "donateLink": "https://is.gd/jojipi"
-  }
+  },
+  "links": [
+    "https://elm-lang.org/blog/small-assets-without-the-headache",
+    "https://github.com/elm/compiler/blob/master/upgrade-docs/0.19.md",
+    "https://www.anniecannons.org/"
+  ]
 }
