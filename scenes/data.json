@@ -1,33 +1,26 @@
 {
-  "title": "🎉 #elm19upgradeparty 🎉",
-  "summary": "hang out with us and upgrade projects to Elm 0.19 -- feel free to ask questions!",
+  "title": "NoRedInk hackday",
+  "summary": "adding HTTP, time, and Sub support to elm-program-test -- feel free to ask questions!",
   "schedule": {
     "past": [
-      { "time": "9:00 PST", "description": "Welcome! and an overview of new features in Elm 0.19" },
-      { "time": "9:30 PST", "description": "(possible pair programming with surprise guest)" },
-      { "description": "upgrading elm-dropbox and answering questions" },
-      { "time": "10:10 PST", "description": "info about AnnieCannons (with possible special guest)" },
-      { "time": "10:10 PST", "description": "info about AnnieCannons" },
-      { "description": "upgrading elm-program-test and answering questions" },
-      { "time": "10:30 PST", "description": "lessons from upgrading large codebases to Elm 0.19 w/ Luke and Martin" },
-      { "description": "continuing to upgrade packages, pairing w/ Luke" },
-      { "description": "(possible pair programming w/ Brian)" },
-      { "description": "upgrading packages and answering questions" },
-      { "time": "11:15 PST", "description": "demo of elm-benchmark w/ Brian" },
+      { "time": "11:15am PST", "description": "open-source work on elm-program-test" },
+      { "time": "12pm PST", "description": "(lunch break)" },
+      { "time": "1:30pm PST", "description": "open-source work on elm-program-test" },
+      { "time": "3:15pm PST", "description": "(~30min break)" },
       {}
     ],
     "upcoming": [
-      { "time": "11:45 PST", "description": "(possible demo of elm-readiness with Tomáš)" }
+      { "time": "4:10pm PST", "description": "open-source work on elm-program-test" },
+      { "time": "Saturday", "description": "installing funkwhale (open-source, federated music library) on kubernetes" }
     ]
   },
   "charity": {
-    "name": "AnnieCannons",
-    "description": "Transforming survivors of human trafficking into software professionals",
-    "donateLink": "https://is.gd/jojipi"
+    "name": "Black Girls Code",
+    "description": "Introducing computer coding lessons to young girls from underrepresented communities",
+    "donateLink": "https://bit.ly/blackgirlsarethefuture"
   },
   "links": [
-    "https://elm-lang.org/blog/small-assets-without-the-headache",
-    "https://github.com/elm/compiler/blob/master/upgrade-docs/0.19.md",
-    "https://www.anniecannons.org/"
+    "https://package.elm-lang.org/packages/avh4/elm-program-test/latest/",
+    "http://www.blackgirlscode.com/"
   ]
 }
