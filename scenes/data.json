@@ -1,17 +1,11 @@
 {
-  "title": "NoRedInk hackday",
-  "summary": "adding HTTP, time, and Sub support to elm-program-test -- feel free to ask questions!",
+  "title": "Welcome Back! Stream setup",
+  "summary": "hang out, ask anything about Elm while I set up my stream overlays",
   "schedule": {
     "past": [
-      { "time": "11:15am PST", "description": "open-source work on elm-program-test" },
-      { "time": "12pm PST", "description": "(lunch break)" },
-      { "time": "1:30pm PST", "description": "open-source work on elm-program-test" },
-      { "time": "3:15pm PST", "description": "(~30min break)" },
-      {}
     ],
     "upcoming": [
-      { "time": "4:10pm PST", "description": "open-source work on elm-program-test" },
-      { "time": "Saturday", "description": "installing funkwhale (open-source, federated music library) on kubernetes" }
+      { "time": "now", "description": "Updating scenes (HTML + mustache)" }
     ]
   },
   "charity": {
@@ -20,7 +14,7 @@
     "donateLink": "https://bit.ly/blackgirlsarethefuture"
   },
   "links": [
-    "https://package.elm-lang.org/packages/avh4/elm-program-test/latest/",
+    "https://twitter.com/avh4",
     "http://www.blackgirlscode.com/"
   ]
 }
