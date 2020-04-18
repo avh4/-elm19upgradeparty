@@ -1,11 +1,10 @@
 {
   "devDependencies": {
-    "chokidar-cli": "^1.2.1",
-    "mustache": "^3.0.1"
+    "chokidar-cli": "^2.1.0",
+    "mustache": "^4.0.1"
   },
   "scripts": {
     "build": "for i in scenes/*.html.mustache; do mustache -p scenes/charity.mustache -p scenes/head.mustache scenes/data.json \"$i\" > \"${i%.mustache}\"; done",
-    "watch": "chokidar --initial 'scenes/data.json' 'scenes/*.mustache' -c 'npm run-script build'",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "watch": "chokidar --initial 'scenes/data.json' 'scenes/*.mustache' -c 'npm run-script build'"
   }
 }
