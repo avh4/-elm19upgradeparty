@@ -9,6 +9,6 @@
   "scripts": {
     "build": "for i in scenes/*.html.mustache; do mustache -p scenes/charity.mustache -p scenes/head.mustache scenes/data.json \"$i\" > \"${i%.mustache}\"; done",
     "watch": "chokidar --initial 'scenes/data.json' 'scenes/*.mustache' -c 'npm run-script build'",
-    "elm-start": "elm-live src/Main.elm --pushstate"
+    "elm-start": "elm-live src/Main.elm --pushstate --port 7499"
   }
 }
