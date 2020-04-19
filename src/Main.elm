@@ -3,7 +3,6 @@ module Main exposing (..)
 import Browser
 import Data exposing (Data)
 import Html exposing (Html)
-import Html.Attributes exposing (..)
 import Scenes.Break as Break
 import Scenes.Coding as Coding
 import Scenes.Ending as Ending
@@ -26,20 +25,7 @@ main =
                     model.scene
                         |> Maybe.map Debug.toString
                         |> Maybe.withDefault "ERROR"
-                , body =
-                    let
-                        stylesheet cssFile =
-                            Html.node "link"
-                                [ rel "stylesheet"
-                                , type_ "text/css"
-                                , href cssFile
-                                ]
-                                []
-                    in
-                    [ stylesheet "normalize.css"
-                    , stylesheet "scenes/scenes.css"
-                    , view model
-                    ]
+                , body = [ view model ]
                 }
         , update = update
         , subscriptions = \_ -> Sub.none
