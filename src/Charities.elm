@@ -11,6 +11,14 @@ type alias CharityInfo =
     }
 
 
+annieCannons : CharityInfo
+annieCannons =
+    { name = "AnnieCannons"
+    , description = "Transforming survivors of human trafficking into software professionals"
+    , donateLink = "https://is.gd/jojipi"
+    }
+
+
 blackGirlsCode : CharityInfo
 blackGirlsCode =
     { name = "Black Girls Code"
