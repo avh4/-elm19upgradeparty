@@ -82,7 +82,7 @@ view : Model -> Html msg
 view model =
     case model.scene of
         Just StartingSoon ->
-            StartingSoon.view
+            StartingSoon.view model.data
 
         Just Coding ->
             Coding.view model.data
