@@ -4,6 +4,7 @@ import Browser
 import Data exposing (Data)
 import Html exposing (Html)
 import Html.Attributes exposing (..)
+import Scenes.Break as Break
 import Scenes.Coding as Coding
 import Scenes.StartingSoon as StartingSoon
 import Url exposing (Url)
@@ -56,6 +57,7 @@ update _ model =
 type Scene
     = StartingSoon
     | Coding
+    | Break
 
 
 type alias Model =
@@ -71,6 +73,7 @@ init url =
             Url.oneOf
                 [ Url.map StartingSoon (Url.s "start")
                 , Url.map Coding (Url.s "code")
+                , Url.map Break (Url.s "break")
                 ]
     in
     { scene = Url.parse parser url
@@ -86,6 +89,9 @@ view model =
 
         Just Coding ->
             Coding.view model.data
+
+        Just Break ->
+            Break.view model.data
 
         Nothing ->
             Html.text "Bad URL"
