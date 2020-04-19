@@ -1,7 +1,4 @@
-module Scenes.Coding exposing (view)
-
-{-| A scene for solo livecoding.
--}
+module Scenes.Pairing exposing (view)
 
 import Data exposing (Data)
 import Html exposing (..)
@@ -12,5 +9,5 @@ view : Data -> Html msg
 view =
     ScreenShareLayout.view
         { showTopCam = True
-        , showBottomCam = False
+        , showBottomCam = True
         }

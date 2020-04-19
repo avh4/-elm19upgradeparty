@@ -7,6 +7,7 @@ import Html.Attributes exposing (..)
 import Scenes.Break as Break
 import Scenes.Coding as Coding
 import Scenes.Ending as Ending
+import Scenes.Pairing as Pairing
 import Scenes.StartingSoon as StartingSoon
 import Url exposing (Url)
 import Url.Parser as Url
@@ -60,6 +61,7 @@ type Scene
     | Coding
     | Break
     | Ending
+    | Pairing
 
 
 type alias Model =
@@ -77,6 +79,7 @@ init url =
                 , Url.map Coding (Url.s "code")
                 , Url.map Break (Url.s "break")
                 , Url.map Ending (Url.s "end")
+                , Url.map Pairing (Url.s "pairing")
                 ]
     in
     { scene = Url.parse parser url
@@ -98,6 +101,9 @@ view model =
 
         Just Ending ->
             Ending.view model.data
+
+        Just Pairing ->
+            Pairing.view model.data
 
         Nothing ->
             Html.text "Bad URL"
