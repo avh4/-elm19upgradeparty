@@ -10,6 +10,7 @@ import Scenes.Ending as Ending
 import Scenes.Interview as Interview
 import Scenes.Pairing as Pairing
 import Scenes.StartingSoon as StartingSoon
+import Scenes.Talk as Talk
 import Url exposing (Url)
 import Url.Parser as Url
 
@@ -64,6 +65,7 @@ type Scene
     | Ending
     | Pairing
     | Interview
+    | Talk
 
 
 type alias Model =
@@ -83,6 +85,7 @@ init url =
                 , Url.map Ending (Url.s "end")
                 , Url.map Pairing (Url.s "pairing")
                 , Url.map Interview (Url.s "interview")
+                , Url.map Talk (Url.s "talk")
                 ]
     in
     { scene = Url.parse parser url
@@ -110,6 +113,9 @@ view model =
 
         Just Interview ->
             Interview.view model.data
+
+        Just Talk ->
+            Talk.view model.data
 
         Nothing ->
             Html.text "Bad URL"
