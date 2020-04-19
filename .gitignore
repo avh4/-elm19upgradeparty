@@ -1,6 +1,4 @@
 /node_modules/
-/_site/
 /package-lock.json
-/Gemfile.lock
 /elm-stuff/
 /index.html
