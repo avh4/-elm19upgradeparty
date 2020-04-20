@@ -99,4 +99,19 @@ view config data =
                 List.map viewItem data.schedule.upcoming
             , br [] []
             ]
+        , let
+            viewMusic info =
+                div
+                    [ class "positioned"
+                    , style "right" "15px"
+                    , style "bottom" "10px"
+                    , style "font-size" "16px"
+                    ]
+                    [ span [ class "dim" ] [ text "Music by " ]
+                    , text info.name
+                    , text " "
+                    , a [] [ text info.link ]
+                    ]
+          in
+          viewMaybe viewMusic data.music
         ]

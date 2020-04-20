@@ -4,6 +4,7 @@ module Data exposing (Data, Schedule, ScheduleItem, data)
 -}
 
 import Charities
+import Music
 
 
 data : Data
@@ -19,6 +20,7 @@ data =
             ]
         }
     , charity = Just Charities.blackGirlsCode
+    , music = Just Music.ericSkiff
     , links =
         [ "https://twitter.com/avh4"
         , "http://www.blackgirlscode.com/"
@@ -32,6 +34,7 @@ type alias Data =
     , summary : Maybe String
     , schedule : Schedule
     , charity : Maybe Charities.CharityInfo
+    , music : Maybe Music.MusicInfo
     , links : List String
     }
 
