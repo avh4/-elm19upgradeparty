@@ -67,7 +67,8 @@ view config data =
                     (\summary -> p [] [ text summary ])
                     data.summary
                 , h3 [] [ text "Schedule" ]
-                , let
+                , -- TODO: use same schedule view as ScreenShareLayout
+                  let
                     viewScheduleItem item =
                         li []
                             [ viewMaybe (\time -> text (time ++ ": ")) item.time

@@ -55,6 +55,14 @@ ul.highlight-first li:first-child {
   color: #fdbcff;
 }
 
+ul.schedule li:before {
+  content:"·";
+  font-size:10px;
+  vertical-align:middle;
+  margin-left: -12px;
+  margin-right: 10px;
+}
+
 ul.large-schedule {
   padding-left: 10em;
   padding-right: 8em;

@@ -136,8 +136,17 @@ view config data =
 viewSchedule : Bool -> Data.Schedule -> Html msg
 viewSchedule tightLayout schedule =
     let
-        viewScheduleItem item =
-            li []
+        viewScheduleItem i item =
+            li
+                (if i == 0 then
+                    [ style "border-left" "4px solid #fdbcff"
+                    , style "margin-left" "-13px"
+                    , style "padding-left" "9px"
+                    ]
+
+                 else
+                    []
+                )
                 [ viewMaybe (\time -> text (time ++ ": ")) item.time
                 , text item.description
                 ]
@@ -152,5 +161,5 @@ viewSchedule tightLayout schedule =
             )
             [ text "Schedule" ]
         , ul [ class "schedule highlight-first" ] <|
-            List.map viewScheduleItem schedule.upcoming
+            List.indexedMap viewScheduleItem schedule.upcoming
         ]

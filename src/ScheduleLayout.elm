@@ -36,7 +36,12 @@ view config data =
                 , text "Today's links:"
                 , let
                     viewLink link =
-                        a [] [ text link ]
+                        div
+                            [ style "line-height" "1"
+                            , style "margin-top" "2px"
+                            , style "margin-bottom" "8px"
+                            ]
+                            [ a [] [ text <| String.replace "/" "\u{200B}/" link ] ]
                   in
                   div [] <|
                     List.map viewLink data.links
