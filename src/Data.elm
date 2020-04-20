@@ -9,22 +9,25 @@ import Music
 
 data : Data
 data =
-    { title = "Welcome Back! Stream setup"
-    , summary = Just "hang out, ask anything about Elm while I set up my stream overlays"
+    { title = "Learning elm-ui"
+    , summary = Nothing
     , schedule =
         { past =
-            [ ScheduleItem Nothing "Updating scenes (HTML + mustache)"
-            ]
+            []
         , upcoming =
-            [ ScheduleItem Nothing "Experiment with elm-live for OBS scene setup"
+            [ ScheduleItem (Just "6pm PDT") "Alex Korban's elm-ui intro"
+            , ScheduleItem Nothing "create a wireframe from mockups"
+            , ScheduleItem Nothing "add styling to the wireframe"
+            , ScheduleItem Nothing "learn how to escape to HTML+CSS"
+            , ScheduleItem (Just "(if time)") "make a phone+tablet responsive layout"
+            , ScheduleItem (Just "(if time)") "try elm-animator"
             ]
         }
-    , charity = Just Charities.blackGirlsCode
-    , music = Just Music.ericSkiff
+    , charity = Nothing
+    , music = Just Music.adhesiveWombat
     , links =
-        [ "https://twitter.com/avh4"
-        , "http://www.blackgirlscode.com/"
-        , "https://www.elm-live.com/"
+        [ "https://github.com/mdgriffith/elm-ui"
+        , "https://korban.net/posts/elm/2019-11-17-elm-ui-introduction/"
         ]
     }
 
