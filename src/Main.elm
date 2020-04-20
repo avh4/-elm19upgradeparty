@@ -1,8 +1,10 @@
 module Main exposing (..)
 
 import Browser
+import Browser.Navigation
 import Data exposing (Data)
 import Html exposing (Html)
+import Html.Attributes exposing (href, style)
 import Scenes.Break as Break
 import Scenes.Coding as Coding
 import Scenes.Ending as Ending
@@ -17,8 +19,8 @@ import Url.Parser as Url
 main =
     Browser.application
         { init =
-            \() url _ ->
-                ( init url, Cmd.none )
+            \() url key ->
+                ( init key url, Cmd.none )
         , view =
             \model ->
                 { title =
@@ -40,8 +42,22 @@ type Msg
 
 
 update : Msg -> Model -> ( Model, Cmd Msg )
-update _ model =
-    ( model, Cmd.none )
+update msg model =
+    case msg of
+        OnUrlRequest (Browser.Internal url) ->
+            ( model
+            , Browser.Navigation.pushUrl model.key (Url.toString url)
+            )
+
+        OnUrlRequest (Browser.External url) ->
+            ( model
+            , Browser.Navigation.load url
+            )
+
+        OnUrlChange url ->
+            ( init model.key url
+            , Cmd.none
+            )
 
 
 type Scene
@@ -54,27 +70,36 @@ type Scene
     | Talk
 
 
+allScenes : List ( Scene, String )
+allScenes =
+    [ ( StartingSoon, "start" )
+    , ( Coding, "code" )
+    , ( Break, "break" )
+    , ( Ending, "end" )
+    , ( Pairing, "pairing" )
+    , ( Interview, "interview" )
+    , ( Talk, "talk" )
+    ]
+
+
 type alias Model =
-    { scene : Maybe Scene
+    { key : Browser.Navigation.Key
+    , scene : Maybe Scene
     , data : Data
     }
 
 
-init : Url -> Model
-init url =
+init : Browser.Navigation.Key -> Url -> Model
+init key url =
     let
         parser =
-            Url.oneOf
-                [ Url.map StartingSoon (Url.s "start")
-                , Url.map Coding (Url.s "code")
-                , Url.map Break (Url.s "break")
-                , Url.map Ending (Url.s "end")
-                , Url.map Pairing (Url.s "pairing")
-                , Url.map Interview (Url.s "interview")
-                , Url.map Talk (Url.s "talk")
-                ]
+            Url.oneOf <|
+                List.map
+                    (\( scene, path ) -> Url.map scene (Url.s path))
+                    allScenes
     in
-    { scene = Url.parse parser url
+    { key = key
+    , scene = Url.parse parser url
     , data = Data.data
     }
 
@@ -104,4 +129,7 @@ view model =
             Talk.view model.data
 
         Nothing ->
-            Html.text "Bad URL"
+            Html.ul [ style "font-size" "30px" ] <|
+                List.map
+                    (\( _, path ) -> Html.li [] [ Html.a [ href ("/" ++ path) ] [ Html.text path ] ])
+                    allScenes
