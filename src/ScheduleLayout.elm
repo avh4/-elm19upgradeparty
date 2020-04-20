@@ -33,10 +33,13 @@ view config data =
                 , br [] []
                 , br [] []
                 , br [] []
-
-                -- TODO: show data.links here instead?
-                , text "Elm 0.19 upgrade guide: "
-                , a [] [ text "https://is.gd/xakovu" ]
+                , text "Today's links:"
+                , let
+                    viewLink link =
+                        a [] [ text link ]
+                  in
+                  div [] <|
+                    List.map viewLink data.links
                 ]
             , let
                 viewCharity charity =
