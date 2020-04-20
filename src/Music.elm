@@ -7,6 +7,13 @@ type alias MusicInfo =
     }
 
 
+adhesiveWombat : MusicInfo
+adhesiveWombat =
+    { name = "AdhesiveWombat"
+    , link = "https://soundcloud.com/adhesivewombat/"
+    }
+
+
 ericSkiff : MusicInfo
 ericSkiff =
     { name = "Eric Skiff"
