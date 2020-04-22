@@ -13,11 +13,11 @@ data =
     , summary = Nothing
     , schedule =
         { past =
-            []
-        , upcoming =
             [ ScheduleItem (Just "6pm PDT") "Alex Korban's elm-ui intro"
             , ScheduleItem Nothing "create a wireframe from mockups"
-            , ScheduleItem Nothing "add styling to the wireframe"
+            ]
+        , upcoming =
+            [ ScheduleItem Nothing "add styling to the wireframe"
             , ScheduleItem Nothing "learn how to escape to HTML+CSS"
             , ScheduleItem (Just "(if time)") "make a phone+tablet responsive layout"
             , ScheduleItem (Just "(if time)") "try elm-animator"
@@ -33,6 +33,7 @@ data =
     , links =
         [ "https://github.com/mdgriffith/elm-ui"
         , "https://korban.net/posts/elm/2019-11-17-elm-ui-introduction/"
+        , "https://dribbble.com/shots/5528842-Rainbow-Messenger-App"
         ]
     }
 
