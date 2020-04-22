@@ -30,6 +30,26 @@ view data =
 
             -- TODO: add Twitter logo
             , text "@avh4"
+            , let
+                viewNext info =
+                    div []
+                        [ if data.charity == Nothing then
+                            div []
+                                [ br [] []
+                                , br [] []
+                                ]
+
+                          else
+                            text ""
+                        , h2
+                            [ style "margin-bottom" "-15px" ]
+                            [ text "Next stream: "
+                            , text info.time
+                            ]
+                        , h3 [] [ text info.title ]
+                        ]
+              in
+              viewMaybe viewNext data.nextStream
             ]
         , let
             viewCharity charity =

@@ -23,6 +23,11 @@ data =
             , ScheduleItem (Just "(if time)") "try elm-animator"
             ]
         }
+    , nextStream =
+        Just
+            { time = "Sat 9am PDT / 4pm UTC"
+            , title = "Test-driven development with Elm (part 1 of ...?)"
+            }
     , charity = Nothing
     , music = Just Music.adhesiveWombat
     , links =
@@ -36,6 +41,11 @@ type alias Data =
     { title : String
     , summary : Maybe String
     , schedule : Schedule
+    , nextStream :
+        Maybe
+            { time : String
+            , title : String
+            }
     , charity : Maybe Charities.CharityInfo
     , music : Maybe Music.MusicInfo
     , links : List String
