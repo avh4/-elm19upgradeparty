@@ -1,9 +1,12 @@
 module TalkLayout exposing (Config, view)
 
+import Components.Timer as Timer
 import Data exposing (Data)
-import Html exposing (..)
-import Html.Attributes exposing (..)
+import Element exposing (..)
+import Html exposing (Html, a, div, h1, h3, li, main_, p, span, ul)
+import Html.Attributes exposing (attribute, class, id)
 import Html.Extra exposing (viewMaybe)
+import Time
 
 
 type alias Config =
@@ -11,8 +14,8 @@ type alias Config =
     }
 
 
-view : Config -> Data -> Html msg
-view config data =
+view : Config -> Time.Posix -> Data -> Html msg
+view config now data =
     main_
         [ class "main-scene gradient"
         , attribute "role" "main"
@@ -25,7 +28,7 @@ view config data =
                 [ class "project-name"
                 , attribute "style" "padding: 10px"
                 ]
-                [ text data.title ]
+                [ Html.text data.title ]
             ]
         , div
             [ class "area positioned"
@@ -39,7 +42,7 @@ view config data =
             [ div
                 [ attribute "style" "text-align: center; line-height: 480px; opacity: 0.8"
                 ]
-                [ text "Audio only" ]
+                [ Html.text "Audio only" ]
             ]
         , if config.isGuest then
             div
@@ -50,7 +53,7 @@ view config data =
                 []
 
           else
-            text ""
+            Html.text ""
         , div
             [ class "positioned"
             , attribute "style" "left: 880px; height: 100%; right: 0"
@@ -64,15 +67,15 @@ view config data =
                     attribute "style" "top: 80px; width: 100%; height: 600px; padding: 10px 20px"
                 ]
                 [ viewMaybe
-                    (\summary -> p [] [ text summary ])
+                    (\summary -> p [] [ Html.text summary ])
                     data.summary
-                , h3 [] [ text "Schedule" ]
+                , h3 [] [ Html.text "Schedule" ]
                 , -- TODO: use same schedule view as ScreenShareLayout
                   let
                     viewScheduleItem item =
                         li []
-                            [ viewMaybe (\time -> text (time ++ ": ")) item.time
-                            , text item.description
+                            [ viewMaybe (\time -> Html.text (time ++ ": ")) item.time
+                            , Html.text item.description
                             ]
                   in
                   ul [ class "schedule highlight-first" ] <|
@@ -85,12 +88,28 @@ view config data =
                     [ class "positioned"
                     , attribute "style" "bottom: 10px; right: 440px; font-size: 20px; padding: 20px"
                     ]
-                    [ span [ class "dim" ] [ text "Today's charity: " ]
-                    , text info.name
-                    , text " — "
-                    , span [ class "dim" ] [ text "Donate at " ]
-                    , a [] [ text info.donateLink ]
+                    [ span [ class "dim" ] [ Html.text "Today's charity: " ]
+                    , Html.text info.name
+                    , Html.text " — "
+                    , span [ class "dim" ] [ Html.text "Donate at " ]
+                    , a [] [ Html.text info.donateLink ]
                     ]
           in
           viewMaybe viewCharity data.charity
+        , layout []
+            (row
+                [ height fill
+                , width fill
+                ]
+                [ column
+                    [ height fill
+                    , width (px 400)
+                    , alignRight
+                    ]
+                  <|
+                    List.filterMap identity
+                        [ Maybe.map (el [ alignBottom, width fill ] << Timer.view now) data.timer
+                        ]
+                ]
+            )
         ]

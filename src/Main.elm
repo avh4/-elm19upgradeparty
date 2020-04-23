@@ -1,6 +1,7 @@
 module Main exposing (..)
 
 import Browser
+import Browser.Events exposing (onAnimationFrame)
 import Browser.Navigation
 import Data exposing (Data)
 import Html exposing (Html)
@@ -12,6 +13,8 @@ import Scenes.Interview as Interview
 import Scenes.Pairing as Pairing
 import Scenes.StartingSoon as StartingSoon
 import Scenes.Talk as Talk
+import Task
+import Time
 import Url exposing (Url)
 import Url.Parser as Url
 
@@ -20,25 +23,39 @@ main =
     Browser.application
         { init =
             \() url key ->
-                ( init key url, Cmd.none )
+                ( init key url
+                , Task.perform OnTimeZoneChange Time.here
+                )
         , view =
             \model ->
                 { title =
                     model.scene
                         |> Maybe.map Debug.toString
                         |> Maybe.withDefault "ERROR"
-                , body = [ view model ]
+                , body =
+                    case model.now of
+                        Nothing ->
+                            []
+
+                        Just now ->
+                            [ view now model ]
                 }
         , update = update
-        , subscriptions = \_ -> Sub.none
+        , subscriptions = subscriptions
         , onUrlRequest = OnUrlRequest
         , onUrlChange = OnUrlChange
         }
 
 
+subscriptions _ =
+    onAnimationFrame Tick
+
+
 type Msg
     = OnUrlRequest Browser.UrlRequest
     | OnUrlChange Url
+    | OnTimeZoneChange Time.Zone
+    | Tick Time.Posix
 
 
 update : Msg -> Model -> ( Model, Cmd Msg )
@@ -56,6 +73,16 @@ update msg model =
 
         OnUrlChange url ->
             ( init model.key url
+            , Cmd.none
+            )
+
+        OnTimeZoneChange timezone ->
+            ( { model | timezone = Just timezone }
+            , Cmd.none
+            )
+
+        Tick now ->
+            ( { model | now = Just now }
             , Cmd.none
             )
 
@@ -86,6 +113,8 @@ type alias Model =
     { key : Browser.Navigation.Key
     , scene : Maybe Scene
     , data : Data
+    , timezone : Maybe Time.Zone
+    , now : Maybe Time.Posix
     }
 
 
@@ -101,17 +130,19 @@ init key url =
     { key = key
     , scene = Url.parse parser url
     , data = Data.data
+    , timezone = Nothing
+    , now = Nothing
     }
 
 
-view : Model -> Html msg
-view model =
+view : Time.Posix -> Model -> Html msg
+view now model =
     case model.scene of
         Just StartingSoon ->
             StartingSoon.view model.data
 
         Just Coding ->
-            Coding.view model.data
+            Coding.view now model.data
 
         Just Break ->
             Break.view model.data
@@ -120,13 +151,13 @@ view model =
             Ending.view model.data
 
         Just Pairing ->
-            Pairing.view model.data
+            Pairing.view now model.data
 
         Just Interview ->
-            Interview.view model.data
+            Interview.view now model.data
 
         Just Talk ->
-            Talk.view model.data
+            Talk.view now model.data
 
         Nothing ->
             Html.ul [ style "font-size" "30px" ] <|

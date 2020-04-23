@@ -1,10 +1,12 @@
 module ScreenShareLayout exposing (Config, view)
 
-import Charities
+import Components.Timer as Timer
 import Data exposing (Data)
-import Html exposing (..)
-import Html.Attributes exposing (..)
+import Element exposing (..)
+import Html exposing (Html, a, br, div, h3, li, main_, p, span, ul)
+import Html.Attributes exposing (attribute, class, id, style)
 import Html.Extra exposing (viewMaybe)
+import Time
 
 
 type alias Config =
@@ -13,8 +15,8 @@ type alias Config =
     }
 
 
-view : Config -> Data -> Html msg
-view config data =
+view : Config -> Time.Posix -> Data -> Html msg
+view config now data =
     let
         totalHeight =
             720
@@ -77,7 +79,7 @@ view config data =
                     []
 
               else
-                text ""
+                Html.text ""
             , div
                 [ class "positioned fade-bottom"
                 , style "top" (String.fromInt topCamHeight ++ "px")
@@ -89,7 +91,7 @@ view config data =
                     [ style "font-size" "24px"
                     , style "text-align" "center"
                     ]
-                    [ text data.title ]
+                    [ Html.text data.title ]
                 , viewMaybe
                     (\summary ->
                         p
@@ -99,7 +101,7 @@ view config data =
                              else
                                 []
                             )
-                            [ text summary ]
+                            [ Html.text summary ]
                     )
                     data.summary
                 , viewSchedule tightLayout data.schedule
@@ -115,20 +117,29 @@ view config data =
                         ]
                         [ span
                             [ class "dim" ]
-                            [ text "Today's charity: " ]
-                        , text info.name
+                            [ Html.text "Today's charity: " ]
+                        , Html.text info.name
                         , br [] []
                         , span
                             [ class "dim" ]
-                            [ text "Donate at " ]
-                        , a [] [ text info.donateLink ]
+                            [ Html.text "Donate at " ]
+                        , a [] [ Html.text info.donateLink ]
                         ]
               in
               if charityHeight > 0 then
                 viewMaybe viewCharity data.charity
 
               else
-                text ""
+                Html.text ""
+            , layout [] <|
+                column
+                    [ height fill
+                    , width fill
+                    ]
+                <|
+                    List.filterMap identity
+                        [ Maybe.map (el [ alignBottom, width fill ] << Timer.view now) data.timer
+                        ]
             ]
         ]
 
@@ -147,8 +158,8 @@ viewSchedule tightLayout schedule =
                  else
                     []
                 )
-                [ viewMaybe (\time -> text (time ++ ": ")) item.time
-                , text item.description
+                [ viewMaybe (\time -> Html.text (time ++ ": ")) item.time
+                , Html.text item.description
                 ]
     in
     div []
@@ -159,7 +170,7 @@ viewSchedule tightLayout schedule =
              else
                 []
             )
-            [ text "Schedule" ]
+            [ Html.text "Schedule" ]
         , ul [ class "schedule highlight-first" ] <|
             List.indexedMap viewScheduleItem schedule.upcoming
         ]

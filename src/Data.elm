@@ -5,6 +5,7 @@ module Data exposing (Data, Schedule, ScheduleItem, data)
 
 import Charities
 import Music
+import Time
 
 
 data : Data
@@ -28,6 +29,7 @@ data =
             { time = "Sat 9am PDT / 4pm UTC"
             , title = "Test-driven development with Elm (part 1 of ...?)"
             }
+    , timer = Nothing
     , charity = Nothing
     , music = Just Music.adhesiveWombat
     , links =
@@ -36,6 +38,10 @@ data =
         , "https://dribbble.com/shots/5528842-Rainbow-Messenger-App"
         ]
     }
+
+
+lastTime h m s ms =
+    ((((h * 60) + m) * 60 + s) * 1000) + ms
 
 
 type alias Data =
@@ -47,6 +53,7 @@ type alias Data =
             { time : String
             , title : String
             }
+    , timer : Maybe ( Int, Time.Posix )
     , charity : Maybe Charities.CharityInfo
     , music : Maybe Music.MusicInfo
     , links : List String

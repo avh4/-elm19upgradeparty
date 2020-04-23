@@ -6,9 +6,10 @@ module Scenes.Coding exposing (view)
 import Data exposing (Data)
 import Html exposing (..)
 import ScreenShareLayout
+import Time
 
 
-view : Data -> Html msg
+view : Time.Posix -> Data -> Html msg
 view =
     ScreenShareLayout.view
         { showTopCam = True
