@@ -2,6 +2,7 @@ module Components.Timer exposing (view)
 
 import Element exposing (..)
 import Element.Font as Fonts
+import Html.Attributes as Html
 import Time
 
 
@@ -37,7 +38,13 @@ view now ( offset, start ) =
         [ el
             [ onRight
                 (el
-                    [ alpha 0.2
+                    [ alpha <|
+                        if m <= 0 then
+                            1.0
+
+                        else
+                            0.2
+                    , htmlAttribute (Html.style "transition" "opacity 1.5s")
                     , Fonts.size 30
                     , moveDown 17
                     ]
