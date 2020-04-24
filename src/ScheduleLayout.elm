@@ -1,5 +1,6 @@
 module ScheduleLayout exposing (Config, view)
 
+import Components.Countdown as Countdown
 import Data exposing (Data)
 import Element exposing (..)
 import Element.Font as Fonts
@@ -7,6 +8,7 @@ import Html exposing (Html, a, b, br, div, h1, h3, i, li, main_, span, ul)
 import Html.Attributes exposing (attribute, class, style)
 import Html.Extra exposing (viewMaybe)
 import Palette
+import Time
 
 
 type alias Config =
@@ -17,8 +19,8 @@ type alias Config =
     }
 
 
-view : Config -> Data -> Html msg
-view config data =
+view : Config -> Time.Posix -> Data -> Html msg
+view config now data =
     main_
         [ class "main-scene gradient"
         , attribute "role" "main"
@@ -90,19 +92,31 @@ view config data =
             [ h1
                 [ class "project-name" ]
                 [ Html.text data.title ]
-            , [ Maybe.map
-                    (\title ->
-                        el
-                            [ Palette.fontSize.h2
-                            , Fonts.bold
+            , [ row
+                    [ width fill
+                    , height (px 70)
+                    ]
+                <|
+                    case config.sceneTitle of
+                        Just title ->
+                            [ el
+                                [ Palette.fontSize.h2
+                                , Fonts.bold
+                                ]
+                                (text title)
+                            , el
+                                [ centerX
+                                , Palette.fontSize.h2
+                                ]
+                                (Countdown.view now data.startAt)
                             ]
-                            (text title)
-                    )
-                    config.sceneTitle
+
+                        Nothing ->
+                            []
               ]
-                |> List.filterMap identity
                 |> column
-                    [ paddingEach { top = 45, bottom = 25, left = 0, right = 0 }
+                    [ width fill
+                    , paddingEach { top = 45, bottom = 25, left = 0, right = 20 }
                     ]
                 |> layout [ Fonts.color Palette.color.mainText ]
             , h3 [] [ Html.text config.scheduleTitle ]
@@ -141,4 +155,16 @@ view config data =
                     ]
           in
           viewMaybe viewMusic data.music
+        , if config.sceneTitle == Nothing then
+            -- show the countdown here
+            el
+                [ alignRight
+                , alignBottom
+                , htmlAttribute (style "zoom" "2")
+                ]
+                (Countdown.view now data.startAt)
+                |> layout [ padding 50 ]
+
+          else
+            Html.text ""
         ]

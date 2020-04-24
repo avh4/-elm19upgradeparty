@@ -1,11 +1,12 @@
 module Palette exposing (..)
 
-import Element exposing (rgb)
+import Element exposing (..)
 import Element.Font as Fonts
 
 
 color =
     { mainText = rgb 1 1 1
+    , accent = rgb255 0xFD 0xBC 0xFF
     }
 
 

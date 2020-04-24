@@ -139,13 +139,13 @@ view : Time.Posix -> Model -> Html msg
 view now model =
     case model.scene of
         Just StartingSoon ->
-            StartingSoon.view model.data
+            StartingSoon.view now model.data
 
         Just Coding ->
             Coding.view now model.data
 
         Just Break ->
-            Break.view model.data
+            Break.view now model.data
 
         Just Ending ->
             Ending.view model.data

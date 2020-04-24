@@ -12,6 +12,7 @@ data : Data
 data =
     { title = "Test-driven development with Elm"
     , summary = Nothing
+    , startAt = Time.millisToPosix 0
     , schedule =
         { past =
             []
@@ -54,6 +55,7 @@ lastTime h m s ms =
 type alias Data =
     { title : String
     , summary : Maybe String
+    , startAt : Time.Posix
     , schedule : Schedule
     , nextStream :
         Maybe

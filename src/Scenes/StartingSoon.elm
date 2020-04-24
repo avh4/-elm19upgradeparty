@@ -6,9 +6,10 @@ module Scenes.StartingSoon exposing (view)
 import Data exposing (Data)
 import Html exposing (..)
 import ScheduleLayout
+import Time
 
 
-view : Data -> Html msg
+view : Time.Posix -> Data -> Html msg
 view =
     ScheduleLayout.view
         { fadeBottom = False
