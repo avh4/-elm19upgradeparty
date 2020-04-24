@@ -29,8 +29,7 @@ view now ( offset, start ) =
                 |> String.padLeft n '0'
     in
     paragraph
-        [ padding 10
-        , Fonts.center
+        [ Fonts.center
         , Fonts.size 50
         , Fonts.bold
         , Fonts.color <| rgba 1 1 1 0.9
@@ -46,7 +45,8 @@ view now ( offset, start ) =
                             0.2
                     , htmlAttribute (Html.style "transition" "opacity 1.5s")
                     , Fonts.size 30
-                    , moveDown 17
+                    , centerY
+                    , moveDown 8
                     ]
                     (Element.text (":" ++ p 2 s ++ "." ++ p 3 ms))
                 )

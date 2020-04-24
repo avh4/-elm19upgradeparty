@@ -17,7 +17,7 @@
 }
 
 .placeholder {
-  border: 1px solid gray;
+  border: 1px solid gray !important;
 }
 
 .area {
