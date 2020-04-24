@@ -5,39 +5,46 @@ module Data exposing (Data, Schedule, ScheduleItem, data)
 
 import Charities
 import Music
-import Time
+import Time exposing (Weekday(..))
 
 
 data : Data
 data =
-    { title = "Learning elm-ui"
+    { title = "Test-driven development with Elm"
     , summary = Nothing
     , schedule =
         { past =
-            [ ScheduleItem (Just "6pm PDT") "Alex Korban's elm-ui intro"
-            , ScheduleItem Nothing "create a wireframe from mockups"
-            ]
+            []
         , upcoming =
-            [ ScheduleItem Nothing "add styling to the wireframe"
-            , ScheduleItem Nothing "learn how to escape to HTML+CSS"
-            , ScheduleItem (Just "(if time)") "make a phone+tablet responsive layout"
-            , ScheduleItem (Just "(if time)") "try elm-animator"
+            [ ScheduleItem (Just "9am PDT") "Project inception — intro the project, organize the features, and prioritize"
+            , ScheduleItem (Just "9:30 PDT") "Iteration Zero — set everything up and do our first deploy"
+            , ScheduleItem Nothing "Start test-driving some features!"
             ]
         }
     , nextStream =
         Just
-            { time = "Sat 9am PDT / 4pm UTC"
-            , title = "Test-driven development with Elm (part 1 of ...?)"
+            { time = regularTime Tue
+            , title = "Test-driven development with Elm (part 2)"
             }
     , timer = Nothing
     , charity = Nothing
     , music = Just Music.adhesiveWombat
     , links =
-        [ "https://github.com/mdgriffith/elm-ui"
-        , "https://korban.net/posts/elm/2019-11-17-elm-ui-introduction/"
-        , "https://dribbble.com/shots/5528842-Rainbow-Messenger-App"
-        ]
+        []
     }
+
+
+regularTime : Time.Weekday -> String
+regularTime day =
+    case day of
+        Tue ->
+            "Tue 6pm PDT / Wed 1am UTC"
+
+        Sat ->
+            "Sat 9am PDT / 4pm UTC"
+
+        _ ->
+            ""
 
 
 lastTime h m s ms =

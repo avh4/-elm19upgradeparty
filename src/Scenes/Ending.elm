@@ -14,8 +14,8 @@ view data =
         ]
         [ div
             [ class "positioned"
-            , style "left" "200px"
-            , style "right" "200px"
+            , style "left" "150px"
+            , style "right" "150px"
             , style "text-align" "center"
             ]
             [ h1 [ class "project-name" ] [ text "Thanks for watching!" ]

@@ -33,7 +33,11 @@ view config data =
                 , br [] []
                 , br [] []
                 , br [] []
-                , text "Today's links:"
+                , if data.links /= [] then
+                    text "Today's links:"
+
+                  else
+                    text ""
                 , let
                     viewLink link =
                         div

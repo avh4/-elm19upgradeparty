@@ -61,7 +61,7 @@ view config now data =
             [ div
                 [ class "positioned fade-bottom"
                 , if config.isGuest then
-                    attribute "style" "top: 20px; width: 100%; height: 400px; padding: 10px 20px"
+                    attribute "style" "top: 60px; width: 100%; height: 380px; padding: 10px 20px"
 
                   else
                     attribute "style" "top: 80px; width: 100%; height: 600px; padding: 10px 20px"
