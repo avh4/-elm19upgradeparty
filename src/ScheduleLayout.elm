@@ -1,8 +1,8 @@
 module ScheduleLayout exposing (Config, view)
 
 import Data exposing (Data)
-import Html exposing (..)
-import Html.Attributes exposing (..)
+import Html exposing (Html, a, b, br, div, h1, h2, h3, i, li, main_, span, ul)
+import Html.Attributes exposing (attribute, class, style)
 import Html.Extra exposing (viewMaybe)
 
 
@@ -29,15 +29,15 @@ view config data =
                 [ style "padding" "100px 40px 100px 20px"
                 , style "font-size" "20px"
                 ]
-                [ text (Maybe.withDefault "" data.summary)
+                [ Html.text (Maybe.withDefault "" data.summary)
                 , br [] []
                 , br [] []
                 , br [] []
                 , if data.links /= [] then
-                    text "Today's links:"
+                    Html.text "Today's links:"
 
                   else
-                    text ""
+                    Html.text ""
                 , let
                     viewLink link =
                         div
@@ -45,7 +45,7 @@ view config data =
                             , style "margin-top" "2px"
                             , style "margin-bottom" "8px"
                             ]
-                            [ a [] [ text <| String.replace "/" "\u{200B}/" link ] ]
+                            [ a [] [ Html.text <| String.replace "/" "\u{200B}/" link ] ]
                   in
                   div [] <|
                     List.map viewLink data.links
@@ -59,18 +59,18 @@ view config data =
                         , style "font-size" "20px"
                         , style "padding" "10px"
                         ]
-                        [ span [ class "dim" ] [ text "Today's charity: " ]
-                        , text charity.name
+                        [ span [ class "dim" ] [ Html.text "Today's charity: " ]
+                        , Html.text charity.name
                         , br [] []
                         , div
                             [ style "font-size" "80%"
                             , style "line-height" "1.1"
                             , style "padding" "5px"
                             ]
-                            [ i [] [ text charity.description ]
+                            [ i [] [ Html.text charity.description ]
                             ]
-                        , span [ class "dim" ] [ text "Donate at " ]
-                        , a [] [ text charity.donateLink ]
+                        , span [ class "dim" ] [ Html.text "Donate at " ]
+                        , a [] [ Html.text charity.donateLink ]
                         ]
               in
               viewMaybe viewCharity data.charity
@@ -86,17 +86,17 @@ view config data =
             ]
             [ h1
                 [ class "project-name" ]
-                [ text data.title ]
+                [ Html.text data.title ]
             , viewMaybe
-                (\title -> h2 [] [ text title ])
+                (\title -> h2 [] [ Html.text title ])
                 config.sceneTitle
-            , h3 [] [ text config.scheduleTitle ]
+            , h3 [] [ Html.text config.scheduleTitle ]
             , let
                 viewItem item =
                     li []
                         [ b [ class "schedule" ]
-                            [ text (Maybe.withDefault "❧" item.time) ]
-                        , text item.description
+                            [ Html.text (Maybe.withDefault "❧" item.time) ]
+                        , Html.text item.description
                         ]
               in
               ul
@@ -119,10 +119,10 @@ view config data =
                     , style "bottom" "10px"
                     , style "font-size" "16px"
                     ]
-                    [ span [ class "dim" ] [ text "Music by " ]
-                    , text info.name
-                    , text " "
-                    , a [] [ text info.link ]
+                    [ span [ class "dim" ] [ Html.text "Music by " ]
+                    , Html.text info.name
+                    , Html.text " "
+                    , a [] [ Html.text info.link ]
                     ]
           in
           viewMaybe viewMusic data.music
