@@ -1,9 +1,12 @@
 module ScheduleLayout exposing (Config, view)
 
 import Data exposing (Data)
-import Html exposing (Html, a, b, br, div, h1, h2, h3, i, li, main_, span, ul)
+import Element exposing (..)
+import Element.Font as Fonts
+import Html exposing (Html, a, b, br, div, h1, h3, i, li, main_, span, ul)
 import Html.Attributes exposing (attribute, class, style)
 import Html.Extra exposing (viewMaybe)
+import Palette
 
 
 type alias Config =
@@ -87,9 +90,21 @@ view config data =
             [ h1
                 [ class "project-name" ]
                 [ Html.text data.title ]
-            , viewMaybe
-                (\title -> h2 [] [ Html.text title ])
-                config.sceneTitle
+            , [ Maybe.map
+                    (\title ->
+                        el
+                            [ Palette.fontSize.h2
+                            , Fonts.bold
+                            ]
+                            (text title)
+                    )
+                    config.sceneTitle
+              ]
+                |> List.filterMap identity
+                |> column
+                    [ paddingEach { top = 45, bottom = 25, left = 0, right = 0 }
+                    ]
+                |> layout [ Fonts.color Palette.color.mainText ]
             , h3 [] [ Html.text config.scheduleTitle ]
             , let
                 viewItem item =
