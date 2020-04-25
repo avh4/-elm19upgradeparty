@@ -19,7 +19,7 @@ data =
             []
         , upcoming =
             [ ScheduleItem (Just "6pm PDT") "Finish Iteration Zero — set up CI and CD, and our first deployment"
-            , ScheduleItem Nothing "Implement our next feature"
+            , ScheduleItem Nothing "Implement our next feature(s)"
             , ScheduleItem (Just "6:55 PDT") "Retrospective"
             ]
         }
