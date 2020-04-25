@@ -18,16 +18,15 @@ data =
         { past =
             []
         , upcoming =
-            [ ScheduleItem (Just "9am PDT") "Project inception — intro the project, organize the features, and prioritize"
-            , ScheduleItem (Just "9:20 PDT") "Iteration Zero — set everything up and do our first deploy"
-            , ScheduleItem (Just "9:40 PDT") "Start test-driving some features!"
-            , ScheduleItem (Just "10:50 PDT") "Retrospective"
+            [ ScheduleItem (Just "6pm PDT") "Finish Iteration Zero — set up CI and CD, and our first deployment"
+            , ScheduleItem Nothing "Implement our next feature"
+            , ScheduleItem (Just "6:55 PDT") "Retrospective"
             ]
         }
     , nextStream =
         Just
-            { time = regularTime Tue
-            , title = "Test-driven development with Elm (part 2)"
+            { time = regularTime Sat
+            , title = "Test-driven development with Elm (part 3)"
             }
     , timer = Just ( lastTime 3 39 50 0, Nothing )
     , charity = Nothing
