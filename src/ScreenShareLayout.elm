@@ -116,6 +116,7 @@ view config now data =
                                 [ text summary ]
                         )
                         data.summary
+                    , viewGoals now data.goals
                     , Just <| viewSchedule data.schedule
                     , Maybe.map (el [ alignBottom, width fill ] << Timer.view now) data.timer
                     , let
@@ -157,6 +158,34 @@ view config now data =
             ]
             |> layout [ Font.color Palette.color.mainText ]
         ]
+
+
+viewGoals : Time.Posix -> List ( String, Time.Posix ) -> Maybe (Element msg)
+viewGoals now goals =
+    if goals == [] then
+        Nothing
+
+    else
+        let
+            viewGoal ( goal, start ) =
+                row [ width fill, spacing 3 ]
+                    [ el [ alignTop ] (text "☞ ")
+                    , paragraph []
+                        [ text goal
+                        , el
+                            [ alignRight
+                            , alpha 0.7
+                            ]
+                            (text <| Timer.stringMS now ( 0, start ))
+                        ]
+                    ]
+        in
+        Just <|
+            column
+                [ width fill
+                , paddingXY 20 0
+                ]
+                (List.map viewGoal goals)
 
 
 viewSchedule : Data.Schedule -> Element msg

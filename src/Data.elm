@@ -13,6 +13,7 @@ data =
     { title = "Test-driven development with Elm"
     , summary = Nothing
     , startAt = Time.millisToPosix 0
+    , goals = []
     , schedule =
         { past =
             []
@@ -56,6 +57,7 @@ type alias Data =
     { title : String
     , summary : Maybe String
     , startAt : Time.Posix
+    , goals : List ( String, Time.Posix )
     , schedule : Schedule
     , nextStream :
         Maybe

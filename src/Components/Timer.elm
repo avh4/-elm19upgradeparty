@@ -1,9 +1,28 @@
-module Components.Timer exposing (view)
+module Components.Timer exposing (stringMS, view)
 
 import Element exposing (..)
 import Element.Font as Fonts
 import Html.Attributes as Html
 import Time
+
+
+stringMS : Time.Posix -> ( Int, Time.Posix ) -> String
+stringMS now ( offset, start ) =
+    let
+        elapsed =
+            Time.posixToMillis now - Time.posixToMillis start + offset
+
+        s =
+            modBy 60 (elapsed // 1000)
+
+        m =
+            elapsed // (60 * 1000)
+
+        p n i =
+            String.fromInt i
+                |> String.padLeft n '0'
+    in
+    p 2 m ++ ":" ++ p 2 s
 
 
 view : Time.Posix -> ( Int, Time.Posix ) -> Element msg
