@@ -19,8 +19,9 @@ data =
             []
         , upcoming =
             [ ScheduleItem (Just "9am PDT") "Project inception — intro the project, organize the features, and prioritize"
-            , ScheduleItem (Just "9:30 PDT") "Iteration Zero — set everything up and do our first deploy"
-            , ScheduleItem Nothing "Start test-driving some features!"
+            , ScheduleItem (Just "9:20 PDT") "Iteration Zero — set everything up and do our first deploy"
+            , ScheduleItem (Just "9:40 PDT") "Start test-driving some features!"
+            , ScheduleItem (Just "10:50 PDT") "Retrospective"
             ]
         }
     , nextStream =
