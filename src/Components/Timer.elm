@@ -25,11 +25,19 @@ stringMS now ( offset, start ) =
     p 2 m ++ ":" ++ p 2 s
 
 
-view : Time.Posix -> ( Int, Time.Posix ) -> Element msg
+view : Time.Posix -> ( Int, Maybe Time.Posix ) -> Element msg
 view now ( offset, start ) =
     let
+        elapsedSinceLatestStart =
+            case start of
+                Nothing ->
+                    0
+
+                Just start_ ->
+                    Time.posixToMillis now - Time.posixToMillis start_
+
         elapsed =
-            Time.posixToMillis now - Time.posixToMillis start + offset
+            offset + elapsedSinceLatestStart
 
         ms =
             modBy 1000 elapsed
@@ -69,6 +77,18 @@ view now ( offset, start ) =
                     ]
                     (Element.text (":" ++ p 2 s ++ "." ++ p 3 ms))
                 )
+            , onLeft <|
+                if start == Nothing then
+                    el
+                        [ Fonts.size 30
+                        , centerY
+                        , padding 10
+                        , moveDown 2
+                        ]
+                        (text "⏸")
+
+                else
+                    none
             ]
             (Element.text (p 2 h ++ ":" ++ p 2 m))
         ]

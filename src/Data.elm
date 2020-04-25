@@ -29,7 +29,7 @@ data =
             { time = regularTime Tue
             , title = "Test-driven development with Elm (part 2)"
             }
-    , timer = Nothing
+    , timer = Just ( lastTime 3 39 50 0, Nothing )
     , charity = Nothing
     , music = Just Music.adhesiveWombat
     , links =
@@ -65,7 +65,7 @@ type alias Data =
             { time : String
             , title : String
             }
-    , timer : Maybe ( Int, Time.Posix )
+    , timer : Maybe ( Int, Maybe Time.Posix )
     , charity : Maybe Charities.CharityInfo
     , music : Maybe Music.MusicInfo
     , links : List String
