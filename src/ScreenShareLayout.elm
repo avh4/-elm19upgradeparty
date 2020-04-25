@@ -169,12 +169,19 @@ viewGoals now goals =
         let
             viewGoal ( goal, start ) =
                 row [ width fill, spacing 3 ]
-                    [ el [ alignTop ] (text "☞ ")
-                    , paragraph []
+                    [ el
+                        [ alignTop
+                        , moveDown 3
+                        ]
+                        (text "☞ ")
+                    , paragraph
+                        [ spacing 2
+                        ]
                         [ text goal
                         , el
                             [ alignRight
                             , alpha 0.7
+                            , moveDown 0.5
                             ]
                             (text <| Timer.stringMS now ( 0, start ))
                         ]
@@ -184,6 +191,7 @@ viewGoals now goals =
             column
                 [ width fill
                 , paddingXY 20 0
+                , spacing 2
                 ]
                 (List.map viewGoal goals)
 
