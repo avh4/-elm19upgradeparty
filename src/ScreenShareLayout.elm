@@ -141,6 +141,18 @@ view config now data =
 
                       else
                         Nothing
+                    , if bottomCamHeight > 0 then
+                        el
+                            [ width fill
+                            , height (px bottomCamHeight)
+                            , htmlAttribute (id "cam2")
+                            , htmlAttribute (class "placeholder")
+                            ]
+                            none
+                            |> Just
+
+                      else
+                        Nothing
                     ]
             ]
             |> layout [ Font.color Palette.color.mainText ]
