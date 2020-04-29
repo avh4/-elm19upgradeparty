@@ -39,9 +39,6 @@ view now ( offset, start ) =
         elapsed =
             offset + elapsedSinceLatestStart
 
-        ms =
-            modBy 1000 elapsed
-
         s =
             modBy 60 (elapsed // 1000)
 
@@ -69,13 +66,13 @@ view now ( offset, start ) =
                             1.0
 
                         else
-                            0.2
+                            0.3
                     , htmlAttribute (Html.style "transition" "opacity 1.5s")
                     , Fonts.size 30
                     , centerY
                     , moveDown 8
                     ]
-                    (Element.text (":" ++ p 2 s ++ "." ++ p 3 ms))
+                    (Element.text (":" ++ p 2 s))
                 )
             , onLeft <|
                 if start == Nothing then

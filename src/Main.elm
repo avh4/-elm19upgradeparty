@@ -1,7 +1,6 @@
 module Main exposing (..)
 
 import Browser
-import Browser.Events exposing (onAnimationFrame)
 import Browser.Navigation
 import Data exposing (Data)
 import Html exposing (Html)
@@ -48,7 +47,7 @@ main =
 
 
 subscriptions _ =
-    onAnimationFrame Tick
+    Time.every 1000 Tick
 
 
 type Msg
