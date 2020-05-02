@@ -18,18 +18,19 @@ data =
         { past =
             []
         , upcoming =
-            [ ScheduleItem (Just "9am PDT") "Demo — what we've deployed so far"
-            , ScheduleItem (Just "9:05 PDT") "Iteration planning — what's our next big goal?"
-            , ScheduleItem (Just "9:20 PDT") "Implement our next feature(s)"
-            , ScheduleItem (Just "11:50 PDT") "Retrospective"
+            [ ScheduleItem (Just "6pm PDT") "Demo — what we've deployed so far"
+
+            --, ScheduleItem (Just "9:05 PDT") "Iteration planning — what's our next big goal?"
+            , ScheduleItem (Just "6:05 PDT") "Implement our next feature(s)"
+            , ScheduleItem (Just "6:55 PDT") "Retrospective"
             ]
         }
     , nextStream =
         Just
             { time = regularTime Sat
-            , title = "Test-driven development with Elm (part 4)"
+            , title = "Test-driven development with Elm (part 5)"
             }
-    , timer = Just ( lastTime 4 53 55 0, Nothing )
+    , timer = Just ( lastTime 7 39 8 0, Nothing )
     , charity = Nothing
     , music = Just Music.adhesiveWombat
     , links =
