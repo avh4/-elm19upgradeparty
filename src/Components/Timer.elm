@@ -1,4 +1,4 @@
-module Components.Timer exposing (stringMS, view)
+module Components.Timer exposing (Timer, startTimer, stopTimer, stringMS, view)
 
 import Element exposing (..)
 import Element.Font as Fonts
@@ -23,6 +23,36 @@ stringMS now ( offset, start ) =
                 |> String.padLeft n '0'
     in
     p 2 m ++ ":" ++ p 2 s
+
+
+startTimer : Time.Posix -> Maybe Timer -> Maybe Timer
+startTimer startTime timer =
+    case timer of
+        Nothing ->
+            Just ( 0, Just startTime )
+
+        Just ( offset, Nothing ) ->
+            Just ( offset, Just startTime )
+
+        Just ( offset, Just originalStartTime ) ->
+            Just ( offset, Just originalStartTime )
+
+
+stopTimer : Time.Posix -> Maybe Timer -> Maybe Timer
+stopTimer stopTime timer =
+    case timer of
+        Just ( previousOffset, Just startTime ) ->
+            let
+                newOffset =
+                    Time.posixToMillis stopTime - Time.posixToMillis startTime
+            in
+            Just ( previousOffset + newOffset, Nothing )
+
+        Nothing ->
+            Nothing
+
+        Just ( offset, Nothing ) ->
+            Just ( offset, Nothing )
 
 
 type alias Timer =

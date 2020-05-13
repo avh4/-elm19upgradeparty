@@ -4,6 +4,8 @@ module Data exposing (Data, Schedule, ScheduleItem, data)
 -}
 
 import Charities
+import Components.Timer exposing (Timer)
+import Data.Timer
 import Music
 import Time exposing (Weekday(..))
 
@@ -28,7 +30,7 @@ data =
             { time = regularTime Sat
             , title = "Test-driven development with Elm (part 6)"
             }
-    , timer = Nothing
+    , timer = Data.Timer.timer
     , charity = Nothing
     , music = Just Music.adhesiveWombat
     , links =
@@ -64,7 +66,7 @@ type alias Data =
             { time : String
             , title : String
             }
-    , timer : Maybe ( Int, Maybe Time.Posix )
+    , timer : Maybe Timer
     , charity : Maybe Charities.CharityInfo
     , music : Maybe Music.MusicInfo
     , links : List String
