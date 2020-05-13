@@ -25,9 +25,16 @@ stringMS now ( offset, start ) =
     p 2 m ++ ":" ++ p 2 s
 
 
-view : Time.Posix -> ( Int, Maybe Time.Posix ) -> Element msg
-view now ( offset, start ) =
+type alias Timer =
+    ( Int, Maybe Time.Posix )
+
+
+timerToHMS : Time.Posix -> Timer -> { h : Int, m : Int, s : Int, isPaused : Bool }
+timerToHMS now timer =
     let
+        ( offset, start ) =
+            timer
+
         elapsedSinceLatestStart =
             case start of
                 Nothing ->
@@ -38,15 +45,19 @@ view now ( offset, start ) =
 
         elapsed =
             offset + elapsedSinceLatestStart
+    in
+    { h = elapsed // (60 * 60 * 1000)
+    , m = modBy 60 (elapsed // (60 * 1000))
+    , s = modBy 60 (elapsed // 1000)
+    , isPaused = start == Nothing
+    }
 
-        s =
-            modBy 60 (elapsed // 1000)
 
-        m =
-            modBy 60 (elapsed // (60 * 1000))
-
-        h =
-            elapsed // (60 * 60 * 1000)
+view : Time.Posix -> Timer -> Element msg
+view now timer =
+    let
+        { h, m, s, isPaused } =
+            timerToHMS now timer
 
         p n i =
             String.fromInt i
@@ -75,7 +86,7 @@ view now ( offset, start ) =
                     (Element.text (":" ++ p 2 s))
                 )
             , onLeft <|
-                if start == Nothing then
+                if isPaused then
                     el
                         [ Fonts.size 30
                         , centerY
