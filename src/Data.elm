@@ -10,7 +10,7 @@ import Time exposing (Weekday(..))
 
 data : Data
 data =
-    { title = "Test-driven development with Elm"
+    { title = "Stream layouts (in Elm!)"
     , summary = Nothing
     , startAt = Time.millisToPosix 0
     , goals = []
@@ -18,18 +18,17 @@ data =
         { past =
             []
         , upcoming =
-            [ ScheduleItem (Just "9am PDT") "Review our app so far"
-            , ScheduleItem (Just "9:05 PDT") "Iteration planning — what are we working toward?"
-            , ScheduleItem Nothing "Implement our next feature(s)"
-            , ScheduleItem (Just "11:05 PDT") "Retrospective"
+            [ ScheduleItem (Just "6pm PDT") "Just chatting — how's everyone doing?"
+            , ScheduleItem Nothing "Demo of how my overlays currently work"
+            , ScheduleItem Nothing "Making improvements to the stream overlays (taking suggestions of what we should improve today)"
             ]
         }
     , nextStream =
         Just
-            { time = regularTime Tue
-            , title = "Stream layout improvements (in Elm!)"
+            { time = regularTime Sat
+            , title = "Test-driven development with Elm (part 6)"
             }
-    , timer = Just ( lastTime 8 44 30 0, Nothing )
+    , timer = Nothing
     , charity = Nothing
     , music = Just Music.adhesiveWombat
     , links =
