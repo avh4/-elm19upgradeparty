@@ -111,7 +111,7 @@ view config now data =
                                         18
 
                                     else
-                                        24
+                                        21
                                 ]
                                 [ text summary ]
                         )

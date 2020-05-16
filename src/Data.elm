@@ -12,27 +12,28 @@ import Time exposing (Weekday(..))
 
 data : Data
 data =
-    { title = "Stream layouts (in Elm!)"
-    , summary = Nothing
-    , startAt = Time.millisToPosix 0
+    { title = "Test-driven development in Elm"
+    , summary = Just "trying to work fast today; please ask if you want something explained better 🙂"
+    , startAt = Time.millisToPosix 1589644839000
     , goals = []
     , schedule =
         { past =
             []
         , upcoming =
-            [ ScheduleItem (Just "6pm PDT") "Just chatting — how's everyone doing?"
-            , ScheduleItem Nothing "Demo of how my overlays currently work"
-            , ScheduleItem Nothing "Making improvements to the stream overlays (taking suggestions of what we should improve today)"
+            [ ScheduleItem (Just "9am PDT") "Let's get to work!"
+            , ScheduleItem Nothing "finish feature: scaling a recipe to a certain amount"
+            , ScheduleItem Nothing "new feature: ingredients are in the correct order"
+            , ScheduleItem Nothing "new feature: refer back to previous recipes"
             ]
         }
     , nextStream =
         Just
-            { time = regularTime Sat
-            , title = "Test-driven development with Elm (part 6)"
+            { time = regularTime Tue
+            , title = "Open-source Elm work (specifics TBD)"
             }
     , timer = Data.Timer.timer
     , charity = Nothing
-    , music = Just Music.adhesiveWombat
+    , music = Just Music.ericSkiff
     , links =
         []
     }
@@ -49,10 +50,6 @@ regularTime day =
 
         _ ->
             ""
-
-
-lastTime h m s ms =
-    ((((h * 60) + m) * 60 + s) * 1000) + ms
 
 
 type alias Data =

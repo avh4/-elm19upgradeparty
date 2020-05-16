@@ -4,5 +4,9 @@ import Components.Timer as Timer
 import Time
 
 
+lastTime h m s ms =
+    ((((h * 60) + m) * 60 + s) * 1000) + ms
+
+
 timer =
-    Nothing
+    Just ( lastTime 8 44 30 0, Nothing )
