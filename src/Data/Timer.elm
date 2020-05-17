@@ -9,4 +9,4 @@ lastTime h m s ms =
 
 
 timer =
-    Just ( lastTime 8 44 30 0, Nothing )
+    Just ( lastTime 11 34 40 0, Nothing )
