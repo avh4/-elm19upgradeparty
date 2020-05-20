@@ -9,4 +9,6 @@ lastTime h m s ms =
 
 
 timer =
-    Just ( lastTime 11 34 40 0, Nothing )
+    -- TDD project
+    --Just ( lastTime 11 34 40 0, Nothing )
+    Nothing

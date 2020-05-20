@@ -12,30 +12,35 @@ import Time exposing (Weekday(..))
 
 data : Data
 data =
-    { title = "Test-driven development in Elm"
-    , summary = Just "trying to work fast today; please ask if you want something explained better 🙂"
-    , startAt = Time.millisToPosix 1589644839000
+    { title = "Learning elm-animator"
+    , summary = Just "Based on Sarah Drasner's \"The Future of Web Animation\""
+    , startAt = Time.millisToPosix 1589940352000
     , goals = []
     , schedule =
         { past =
             []
         , upcoming =
-            [ ScheduleItem (Just "9am PDT") "Let's get to work!"
-            , ScheduleItem Nothing "finish feature: scaling a recipe to a certain amount"
-            , ScheduleItem Nothing "new feature: ingredients are in the correct order"
-            , ScheduleItem Nothing "new feature: refer back to previous recipes"
+            [ ScheduleItem (Just "6pm PDT") "Get our reference sdras/page-transitions-travelapp running locally"
+            , ScheduleItem Nothing "Set up a SPA app in Elm"
+            , ScheduleItem Nothing "Build two of the header layouts with elm-ui"
+            , ScheduleItem Nothing "Animate the page transition using FLIP principles"
             ]
         }
     , nextStream =
         Just
-            { time = regularTime Tue
-            , title = "Open-source Elm work (specifics TBD)"
+            { time = regularTime Sat
+            , title = "Test-driven development with Elm (part 7)"
             }
     , timer = Data.Timer.timer
     , charity = Nothing
-    , music = Just Music.ericSkiff
+    , music = Just Music.adhesiveWombat
     , links =
-        []
+        [ -- "https://refactoringui.com/book/"
+          "https://github.com/sdras/page-transitions-travelapp"
+        , "https://css-tricks.com/animating-layouts-with-the-flip-technique/"
+        , "https://package.elm-lang.org/packages/mdgriffith/elm-ui/latest/"
+        , "https://package.elm-lang.org/packages/mdgriffith/elm-animator/latest/"
+        ]
     }
 
 
