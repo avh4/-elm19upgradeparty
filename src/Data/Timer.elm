@@ -9,6 +9,7 @@ lastTime h m s ms =
 
 
 timer =
+    -- elm-animator project
+    -- Just ( lastTime 3 34 20 0, Nothing )
     -- TDD project
-    --Just ( lastTime 11 34 40 0, Nothing )
-    Nothing
+    Just ( lastTime 11 34 40 0, Nothing )

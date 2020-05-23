@@ -12,34 +12,32 @@ import Time exposing (Weekday(..))
 
 data : Data
 data =
-    { title = "Learning elm-animator"
-    , summary = Just "Based on Sarah Drasner's \"The Future of Web Animation\""
+    { title = "Test-driven development with Elm"
+    , summary = Nothing
     , startAt = Time.millisToPosix 1589940352000
     , goals = []
     , schedule =
         { past =
             []
         , upcoming =
-            [ ScheduleItem (Just "6pm PDT") "Get our reference sdras/page-transitions-travelapp running locally"
-            , ScheduleItem Nothing "Set up a SPA app in Elm"
-            , ScheduleItem Nothing "Build two of the header layouts with elm-ui"
-            , ScheduleItem Nothing "Animate the page transition using FLIP principles"
+            [ ScheduleItem Nothing "Adding persistent storage using Elm ports (and testing with elm-program-test)"
             ]
         }
     , nextStream =
         Just
-            { time = regularTime Sat
-            , title = "Test-driven development with Elm (part 7)"
+            { time = regularTime Tue
+            , title = "Animating page transitions with elm-animator (Part 2)"
             }
     , timer = Data.Timer.timer
     , charity = Nothing
     , music = Just Music.adhesiveWombat
     , links =
         [ -- "https://refactoringui.com/book/"
-          "https://github.com/sdras/page-transitions-travelapp"
-        , "https://css-tricks.com/animating-layouts-with-the-flip-technique/"
-        , "https://package.elm-lang.org/packages/mdgriffith/elm-ui/latest/"
-        , "https://package.elm-lang.org/packages/mdgriffith/elm-animator/latest/"
+          --  "https://github.com/sdras/page-transitions-travelapp"
+          --, "https://css-tricks.com/animating-layouts-with-the-flip-technique/"
+          --, "https://package.elm-lang.org/packages/mdgriffith/elm-ui/latest/"
+          --, "https://package.elm-lang.org/packages/mdgriffith/elm-animator/latest/"
+          "https://avlive.gitlab.io/hafns"
         ]
     }
 
