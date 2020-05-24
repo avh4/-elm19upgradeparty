@@ -14,13 +14,15 @@ data : Data
 data =
     { title = "Test-driven development with Elm"
     , summary = Nothing
-    , startAt = Time.millisToPosix 1589940352000
+    , startAt = Time.millisToPosix 1590252676000
     , goals = []
     , schedule =
         { past =
             []
         , upcoming =
-            [ ScheduleItem Nothing "Adding persistent storage using Elm ports (and testing with elm-program-test)"
+            [ ScheduleItem Nothing "Use the current date when we save recipes"
+            , ScheduleItem Nothing "Save ingredient amounts when saving recipes"
+            , ScheduleItem Nothing "(maybe) look at replacing localforage with PouchDB or something that has type safety"
             ]
         }
     , nextStream =
@@ -38,6 +40,8 @@ data =
           --, "https://package.elm-lang.org/packages/mdgriffith/elm-ui/latest/"
           --, "https://package.elm-lang.org/packages/mdgriffith/elm-animator/latest/"
           "https://avlive.gitlab.io/hafns"
+        , "https://itch.io/jam/elm-game-jam-4"
+        , "https://www.inkandswitch.com/local-first.html"
         ]
     }
 

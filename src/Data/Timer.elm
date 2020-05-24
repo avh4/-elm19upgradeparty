@@ -12,4 +12,4 @@ timer =
     -- elm-animator project
     -- Just ( lastTime 3 34 20 0, Nothing )
     -- TDD project
-    Just ( lastTime 11 34 40 0, Nothing )
+    Just ( lastTime 14 14 24 0, Nothing )
