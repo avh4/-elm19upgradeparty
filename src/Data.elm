@@ -12,36 +12,35 @@ import Time exposing (Weekday(..))
 
 data : Data
 data =
-    { title = "Test-driven development with Elm"
-    , summary = Nothing
-    , startAt = Time.millisToPosix 1590252676000
+    { title = "Making fancy animations in Elm"
+    , summary = Just "(with intermittent attempts to diagnose my laggy laptop)"
+    , startAt = Time.millisToPosix 1590541519000
     , goals = []
     , schedule =
         { past =
             []
         , upcoming =
-            [ ScheduleItem Nothing "Use the current date when we save recipes"
-            , ScheduleItem Nothing "Save ingredient amounts when saving recipes"
-            , ScheduleItem Nothing "(maybe) look at replacing localforage with PouchDB or something that has type safety"
+            [ ScheduleItem Nothing "generalize our code for animating arbitrary page layout changes"
             ]
         }
     , nextStream =
         Just
-            { time = regularTime Tue
-            , title = "Animating page transitions with elm-animator (Part 2)"
+            { time = regularTime Sat
+            , title = "Test-driven development with Elm"
             }
     , timer = Data.Timer.timer
     , charity = Nothing
-    , music = Just Music.adhesiveWombat
+    , music = Just Music.ericSkiff
     , links =
-        [ -- "https://refactoringui.com/book/"
-          --  "https://github.com/sdras/page-transitions-travelapp"
-          --, "https://css-tricks.com/animating-layouts-with-the-flip-technique/"
-          --, "https://package.elm-lang.org/packages/mdgriffith/elm-ui/latest/"
-          --, "https://package.elm-lang.org/packages/mdgriffith/elm-animator/latest/"
-          "https://avlive.gitlab.io/hafns"
-        , "https://itch.io/jam/elm-game-jam-4"
-        , "https://www.inkandswitch.com/local-first.html"
+        [-- "https://refactoringui.com/book/"
+         --  "https://github.com/sdras/page-transitions-travelapp"
+         --, "https://css-tricks.com/animating-layouts-with-the-flip-technique/"
+         --, "https://package.elm-lang.org/packages/mdgriffith/elm-ui/latest/"
+         --, "https://package.elm-lang.org/packages/mdgriffith/elm-animator/latest/"
+         --  "https://avlive.gitlab.io/hafns"
+         --, "https://itch.io/jam/elm-game-jam-4"
+         --, "https://www.inkandswitch.com/local-first.html"
+         --, "https://elm-radio.com/episode/elm-parser/"
         ]
     }
 
