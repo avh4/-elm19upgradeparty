@@ -9,7 +9,10 @@ lastTime h m s ms =
 
 
 timer =
-    -- elm-animator project
-    -- Just ( lastTime 3 34 20 0, Nothing )
     -- TDD project
-    Just ( lastTime 14 14 24 0, Nothing )
+    --Just ( lastTime 14 14 24 0, Nothing )
+    --    |> Timer.startTimer (Time.millisToPosix 1590441189000)
+    --    |> Timer.stopTimer (Time.millisToPosix 1590447950000)
+    -- elm-animator project
+    --Just ( lastTime 3 34 20 0, Nothing )
+    Nothing

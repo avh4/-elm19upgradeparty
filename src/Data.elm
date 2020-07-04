@@ -12,25 +12,22 @@ import Time exposing (Weekday(..))
 
 data : Data
 data =
-    { title = "Making fancy animations in Elm"
-    , summary = Just "(with intermittent attempts to diagnose my laggy laptop)"
-    , startAt = Time.millisToPosix 1590541519000
+    { title = "Trying to learn about racism in America"
+    , summary = Just "Code can wait right now.  Help me learn, and please correct me when necessary."
+    , startAt = Time.millisToPosix 1590858590000
     , goals = []
     , schedule =
         { past =
             []
         , upcoming =
-            [ ScheduleItem Nothing "generalize our code for animating arbitrary page layout changes"
+            [ ScheduleItem (Just "now") "Look at public resources from the black community about what white folks can and should be doing"
             ]
         }
     , nextStream =
-        Just
-            { time = regularTime Sat
-            , title = "Test-driven development with Elm"
-            }
+        Nothing
     , timer = Data.Timer.timer
     , charity = Nothing
-    , music = Just Music.ericSkiff
+    , music = Nothing
     , links =
         [-- "https://refactoringui.com/book/"
          --  "https://github.com/sdras/page-transitions-travelapp"
