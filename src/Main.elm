@@ -159,7 +159,12 @@ view now model =
             Talk.view now model.data
 
         Nothing ->
-            Html.ul [ style "font-size" "30px" ] <|
+            Html.ul
+                [ style "font-size" "30px"
+                , style "background-color" "#333"
+                , style "min-height" "100vh"
+                ]
+            <|
                 List.map
                     (\( _, path ) -> Html.li [] [ Html.a [ href ("/" ++ path) ] [ Html.text path ] ])
                     allScenes
