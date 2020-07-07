@@ -12,19 +12,22 @@ import Time exposing (Weekday(..))
 
 data : Data
 data =
-    { title = "Trying to learn about racism in America"
-    , summary = Just "Code can wait right now.  Help me learn, and please correct me when necessary."
+    { title = "Welcome back!"
+    , summary = Just "First stream since George Floyd's murder.  Also just got laid off this week (with a ton of other great folks).  Taking things slow, and checking in with everyone."
     , startAt = Time.millisToPosix 1590858590000
     , goals = []
     , schedule =
         { past =
             []
         , upcoming =
-            [ ScheduleItem (Just "now") "Look at public resources from the black community about what white folks can and should be doing"
+            [ ScheduleItem (Just "now") "let's chat! -- and unorganized mix of stuff: Elm code, chat about tech careers, how you all doing?, reflections on racism today, AMA, Elm Q&A"
             ]
         }
     , nextStream =
-        Nothing
+        Just
+            { title = "Next stream"
+            , time = "TBD (but soon)"
+            }
     , timer = Data.Timer.timer
     , charity = Nothing
     , music = Nothing
