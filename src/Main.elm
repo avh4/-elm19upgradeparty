@@ -3,9 +3,12 @@ module Main exposing (..)
 import Browser
 import Browser.Navigation
 import Data exposing (Data)
+import Element exposing (..)
+import Element.Background as Background
 import Html exposing (Html)
 import Html.Attributes exposing (href, style)
 import Scenes.Break as Break
+import Scenes.Calendar as Calendar
 import Scenes.Coding as Coding
 import Scenes.Ending as Ending
 import Scenes.Interview as Interview
@@ -94,6 +97,7 @@ type Scene
     | Pairing
     | Interview
     | Talk
+    | Calendar
 
 
 allScenes : List ( Scene, String )
@@ -105,6 +109,7 @@ allScenes =
     , ( Pairing, "pairing" )
     , ( Interview, "interview" )
     , ( Talk, "talk" )
+    , ( Calendar, "calendar" )
     ]
 
 
@@ -157,6 +162,10 @@ view now model =
 
         Just Talk ->
             Talk.view now model.data
+
+        Just Calendar ->
+            Calendar.view
+                |> Element.layout [ Background.color (rgb 0.2 0.2 0.2) ]
 
         Nothing ->
             Html.ul
