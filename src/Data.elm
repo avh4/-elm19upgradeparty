@@ -12,35 +12,36 @@ import Time exposing (Weekday(..))
 
 data : Data
 data =
-    { title = "Welcome back!"
-    , summary = Just "First stream since George Floyd's murder.  Also just got laid off this week (with a ton of other great folks).  Taking things slow, and checking in with everyone."
+    { title = "Elm Game Jam 4 review"
+    , summary = Just "playing the submitted games, and taking a peek at the code"
     , startAt = Time.millisToPosix 1590858590000
     , goals = []
     , schedule =
         { past =
             []
         , upcoming =
-            [ ScheduleItem (Just "now") "let's chat! -- and unorganized mix of stuff: Elm code, chat about tech careers, how you all doing?, reflections on racism today, AMA, Elm Q&A"
+            [ ScheduleItem (Just "11am PDT") "Check out the Elm Game Jam submissions https://itch.io/jam/elm-game-jam-4"
             ]
         }
     , nextStream =
         Just
-            { title = "Next stream"
-            , time = "TBD (but soon)"
+            { title = "FLIP animations with elm-animator"
+            , time = "Wed (tomorrow) 11am PDT / 5pm UTC"
             }
     , timer = Data.Timer.timer
     , charity = Nothing
-    , music = Nothing
+    , music = Just Music.adhesiveWombat
     , links =
-        [-- "https://refactoringui.com/book/"
-         --  "https://github.com/sdras/page-transitions-travelapp"
-         --, "https://css-tricks.com/animating-layouts-with-the-flip-technique/"
-         --, "https://package.elm-lang.org/packages/mdgriffith/elm-ui/latest/"
-         --, "https://package.elm-lang.org/packages/mdgriffith/elm-animator/latest/"
-         --  "https://avlive.gitlab.io/hafns"
-         --, "https://itch.io/jam/elm-game-jam-4"
-         --, "https://www.inkandswitch.com/local-first.html"
-         --, "https://elm-radio.com/episode/elm-parser/"
+        [ -- "https://refactoringui.com/book/"
+          --  "https://github.com/sdras/page-transitions-travelapp"
+          --, "https://css-tricks.com/animating-layouts-with-the-flip-technique/"
+          --, "https://package.elm-lang.org/packages/mdgriffith/elm-ui/latest/"
+          --, "https://package.elm-lang.org/packages/mdgriffith/elm-animator/latest/"
+          --  "https://avlive.gitlab.io/hafns"
+          --, "https://itch.io/jam/elm-game-jam-4"
+          --, "https://www.inkandswitch.com/local-first.html"
+          --, "https://elm-radio.com/episode/elm-parser/"
+          "https://itch.io/jam/elm-game-jam-4"
         ]
     }
 
