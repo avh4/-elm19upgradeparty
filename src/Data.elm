@@ -12,21 +12,21 @@ import Time exposing (Weekday(..))
 
 data : Data
 data =
-    { title = "Elm Game Jam 4 review"
-    , summary = Just "playing the submitted games, and taking a peek at the code"
-    , startAt = Time.millisToPosix 1590858590000
+    { title = "FLIP animations with elm-animator"
+    , summary = Just "making a reusable module for arbitrary page transition animations based on Sarah Drasner's \"Travel Blog\" example"
+    , startAt = Time.millisToPosix 1594322868000
     , goals = []
     , schedule =
         { past =
             []
         , upcoming =
-            [ ScheduleItem (Just "11am PDT") "Check out the Elm Game Jam submissions https://itch.io/jam/elm-game-jam-4"
+            [ ScheduleItem (Just "11am PDT") "Time to code!"
             ]
         }
     , nextStream =
         Just
-            { title = "FLIP animations with elm-animator"
-            , time = "Wed (tomorrow) 11am PDT / 5pm UTC"
+            { title = "code review for viewers, and stream overlay improvements"
+            , time = "Thu (tomorrow) 11am PDT / 5pm UTC"
             }
     , timer = Data.Timer.timer
     , charity = Just Charities.blackLivesMatter
