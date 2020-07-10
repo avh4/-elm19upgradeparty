@@ -64,7 +64,7 @@ view config now data =
                         , style "font-size" "20px"
                         , style "padding" "10px"
                         ]
-                        [ span [ class "dim" ] [ Html.text "Today's charity: " ]
+                        [ span [ class "dim" ] [ Html.text "Today's cause: " ]
                         , Html.text charity.name
                         , br [] []
                         , div

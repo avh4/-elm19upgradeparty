@@ -62,7 +62,7 @@ view data =
                     , style "padding" "10px"
                     , style "text-align" "center"
                     ]
-                    [ span [ class "dim" ] [ text "Today's charity: " ]
+                    [ span [ class "dim" ] [ text "Today's cause: " ]
                     , text charity.name
                     , br [] []
                     , div

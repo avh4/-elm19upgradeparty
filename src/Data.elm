@@ -29,7 +29,7 @@ data =
             , time = "Wed (tomorrow) 11am PDT / 5pm UTC"
             }
     , timer = Data.Timer.timer
-    , charity = Nothing
+    , charity = Just Charities.blackLivesMatter
     , music = Just Music.adhesiveWombat
     , links =
         [ -- "https://refactoringui.com/book/"

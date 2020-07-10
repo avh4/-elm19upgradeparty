@@ -25,3 +25,11 @@ blackGirlsCode =
     , description = "Introducing computer coding lessons to young girls from underrepresented communities"
     , donateLink = "https://bit.ly/blackgirlsarethefuture"
     }
+
+
+blackLivesMatter : CharityInfo
+blackLivesMatter =
+    { name = "Black Lives Matter"
+    , description = ""
+    , donateLink = "https://blacklivesmatter.com/"
+    }
