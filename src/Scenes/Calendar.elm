@@ -11,10 +11,10 @@ import Palette
 
 data : List Day
 data =
-    [ { day = "Tue, July 8"
+    [ { day = "Tue, July 7"
       , events = []
       }
-    , { day = "Wed, July 9"
+    , { day = "Wed, July 8"
       , events =
             [ { time = "11am PDT"
               , time2 = " / 5pm UTC"
@@ -25,7 +25,7 @@ data =
               }
             ]
       }
-    , { day = "Thu, July 10"
+    , { day = "Thu, July 9"
       , events =
             [ { time = "11am PDT"
               , time2 = " / 5pm UTC"
@@ -36,7 +36,7 @@ data =
               }
             ]
       }
-    , { day = "Fri, July 11"
+    , { day = "Fri, July 10"
       , events =
             [ { time = "11am PDT"
               , time2 = " / 5pm UTC"
@@ -47,7 +47,7 @@ data =
               }
             ]
       }
-    , { day = "Sat, July 12"
+    , { day = "Sat, July 11"
       , events =
             [ { time = "10am PDT"
               , time2 = " / 4pm UTC"
@@ -139,6 +139,22 @@ viewEvents day =
 
         hourSize =
             95
+
+        isToday =
+            day.day == "Fri, July 10"
+
+        theme =
+            if isToday then
+                { borderColor = Palette.color.accentBold
+                , startTimeColor = Palette.color.accentBold
+                , gradientAngle = degrees 140
+                }
+
+            else
+                { borderColor = rgb 0.6 0.7 0.67
+                , startTimeColor = Palette.color.accent
+                , gradientAngle = degrees 140
+                }
     in
     case day.events of
         [] ->
@@ -160,7 +176,7 @@ viewEvents day =
         [ event ] ->
             el
                 [ Background.gradient
-                    { angle = degrees 140
+                    { angle = theme.gradientAngle
                     , steps =
                         [ Palette.color.bgGradientBlue
                         , Palette.color.bgGradientGreen
@@ -169,7 +185,7 @@ viewEvents day =
                 , Font.color Palette.color.mainText
                 , width fill
                 , Border.rounded 11
-                , Border.color (rgb 0.6 0.7 0.67)
+                , Border.color theme.borderColor
                 , Border.width 3
                 , padding 10
                 , moveDown (hourSize * (event.startHour - hourAtTop))
@@ -183,7 +199,7 @@ viewEvents day =
                         ]
                         [ el
                             [ Font.extraBold
-                            , Font.color Palette.color.accent
+                            , Font.color theme.startTimeColor
                             ]
                             (text event.time)
                         , text event.time2
