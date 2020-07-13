@@ -11,51 +11,64 @@ import Palette
 
 data : List Day
 data =
-    [ { day = "Tue, July 7"
-      , events = []
-      }
-    , { day = "Wed, July 8"
+    [ { day = "Tue, July 14"
       , events =
-            [ { time = "11am PDT"
-              , time2 = " / 5pm UTC"
-              , startHour = 11
-              , duration = 2
-              , title = "Elm Game Jam 4 review"
-              , description = "playing the games, and taking a look at the code"
-              }
+            [ MyEvent
+                { time = "11am PDT"
+                , time2 = " / 5pm UTC"
+                , startHour = 11
+                , duration = 2
+                , title = "Elm Game Jam 4 review (part 2)"
+                , description = "playing the games, and taking a look at the code"
+                }
             ]
       }
-    , { day = "Thu, July 9"
+    , { day = "Wed, July 15"
       , events =
-            [ { time = "11am PDT"
-              , time2 = " / 5pm UTC"
-              , startHour = 11
-              , duration = 2
-              , title = "FLIP animations with elm-animator"
-              , description = "making a reusable module for arbitrary page transition animations"
-              }
+            [ MyEvent
+                { time = "11am PDT"
+                , time2 = " / 5pm UTC"
+                , startHour = 11
+                , duration = 2
+                , title = "elm-program-test with @mikethadley"
+                , description = "we'll be adding some advanced effect simulation features to elm-program-test"
+                }
             ]
       }
-    , { day = "Fri, July 10"
+    , { day = "Thu, July 16"
       , events =
-            [ { time = "11am PDT"
-              , time2 = " / 5pm UTC"
-              , startHour = 11
-              , duration = 2
-              , title = "Casual Elm Friday"
-              , description = "AMA, code review sessions for viewers, and adding features to my stream overlays"
-              }
+            [ MyEvent
+                { time = "11am PDT"
+                , time2 = " / 5pm UTC"
+                , startHour = 11
+                , duration = 2
+                , title = "FLIP animations with elm-animator"
+                , description = "making a reusable module for arbitrary page transition animations"
+                }
             ]
       }
-    , { day = "Sat, July 11"
+    , { day = "Fri, July 17"
       , events =
-            [ { time = "10am PDT"
-              , time2 = " / 4pm UTC"
-              , startHour = 10
-              , duration = 2.5
-              , title = "Test-Driven Development with Elm"
-              , description = "continuing our “Recipe Science!” mobile-first webapp"
-              }
+            [ MyEvent
+                { time = "11am PDT"
+                , time2 = " / 5pm UTC"
+                , startHour = 11
+                , duration = 2
+                , title = "Getting elm-format to 1.0"
+                , description = "[haskell] adding multiline support to types"
+                }
+            ]
+      }
+    , { day = "Sat, July 18"
+      , events =
+            [ MyEvent
+                { time = "10am PDT"
+                , time2 = " / 4pm UTC"
+                , startHour = 10
+                , duration = 2.5
+                , title = "Test-Driven Development with Elm"
+                , description = "continuing our “Recipe Science!” mobile-first webapp"
+                }
             ]
       }
     ]
@@ -79,8 +92,10 @@ asString =
         renderDay day =
             List.map (renderEvent day) day.events
 
-        renderEvent day event =
-            "- " ++ day.day ++ ", " ++ event.time ++ event.time2 ++ ": " ++ event.title ++ " — " ++ event.description
+        renderEvent day e =
+            case e of
+                MyEvent event ->
+                    "- " ++ day.day ++ ", " ++ event.time ++ event.time2 ++ ": " ++ event.title ++ " — " ++ event.description
     in
     "Upcoming stream schedule:\n"
         ++ (data
@@ -95,14 +110,15 @@ type alias Day =
     }
 
 
-type alias Event =
-    { time : String
-    , time2 : String
-    , startHour : Float
-    , duration : Float
-    , title : String
-    , description : String
-    }
+type Event
+    = MyEvent
+        { time : String
+        , time2 : String
+        , startHour : Float
+        , duration : Float
+        , title : String
+        , description : String
+        }
 
 
 viewDay : Day -> Element msg
@@ -173,52 +189,54 @@ viewEvents day =
                     [ text "No stream today" ]
                 )
 
-        [ event ] ->
-            el
-                [ Background.gradient
-                    { angle = theme.gradientAngle
-                    , steps =
-                        [ Palette.color.bgGradientBlue
-                        , Palette.color.bgGradientGreen
+        [ e ] ->
+            case e of
+                MyEvent event ->
+                    el
+                        [ Background.gradient
+                            { angle = theme.gradientAngle
+                            , steps =
+                                [ Palette.color.bgGradientBlue
+                                , Palette.color.bgGradientGreen
+                                ]
+                            }
+                        , Font.color Palette.color.mainText
+                        , width fill
+                        , Border.rounded 11
+                        , Border.color theme.borderColor
+                        , Border.width 3
+                        , padding 10
+                        , moveDown (hourSize * (event.startHour - hourAtTop))
+                        , height (px <| round <| hourSize * event.duration)
                         ]
-                    }
-                , Font.color Palette.color.mainText
-                , width fill
-                , Border.rounded 11
-                , Border.color theme.borderColor
-                , Border.width 3
-                , padding 10
-                , moveDown (hourSize * (event.startHour - hourAtTop))
-                , height (px <| round <| hourSize * event.duration)
-                ]
-                (column
-                    [ spacing 7
-                    ]
-                    [ row
-                        [ Font.size 13
-                        ]
-                        [ el
-                            [ Font.extraBold
-                            , Font.color theme.startTimeColor
+                        (column
+                            [ spacing 7
                             ]
-                            (text event.time)
-                        , text event.time2
-                        ]
-                    , paragraph
-                        [ spacing 2
-                        , Font.size 22
-                        ]
-                        [ text event.title
-                        ]
-                    , paragraph
-                        [ spacing 1
-                        , Font.size 16
-                        , alpha 0.8
-                        ]
-                        [ text event.description
-                        ]
-                    ]
-                )
+                            [ row
+                                [ Font.size 13
+                                ]
+                                [ el
+                                    [ Font.extraBold
+                                    , Font.color theme.startTimeColor
+                                    ]
+                                    (text event.time)
+                                , text event.time2
+                                ]
+                            , paragraph
+                                [ spacing 2
+                                , Font.size 22
+                                ]
+                                [ text event.title
+                                ]
+                            , paragraph
+                                [ spacing 1
+                                , Font.size 16
+                                , alpha 0.8
+                                ]
+                                [ text event.description
+                                ]
+                            ]
+                        )
 
         _ ->
             text "TODO: multiple streams in a day"
