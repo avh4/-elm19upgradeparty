@@ -19,3 +19,10 @@ ericSkiff =
     { name = "Eric Skiff"
     , link = "https://ericskiff.com/music/"
     }
+
+
+cistrolat : MusicInfo
+cistrolat =
+    { name = "Cistrolat"
+    , link = "https://www.ninety9lives.com/artists/cistrolat/"
+    }
