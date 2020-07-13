@@ -12,36 +12,41 @@ import Time exposing (Weekday(..))
 
 data : Data
 data =
-    { title = "FLIP animations with elm-animator"
-    , summary = Just "making a reusable module for arbitrary page transition animations based on Sarah Drasner's \"Travel Blog\" example"
-    , startAt = Time.millisToPosix 1594322868000
+    { title = "Casual Elm Friday"
+    , summary = Just "AMA, viewer code reviews, Elm Q&A, and working on my stream overlays"
+    , startAt = Time.millisToPosix 1594404390000
     , goals = []
     , schedule =
+
         { past =
-            []
+            [ScheduleItem Nothing "code review of elm-cropper"
+                        ,ScheduleItem Nothing "check out wondible's labmda handler"
+            , ScheduleItem (Just "11:15am") "taking viewer code review requests — lmk in chat if you're interested"
+            , ScheduleItem (Just "(if time)") "improving my stream overlays"
+                                     ]
         , upcoming =
-            [ ScheduleItem (Just "11am PDT") "Time to code!"
+            [ ScheduleItem Nothing "AMA + Elm Q&A"
             ]
         }
     , nextStream =
         Just
-            { title = "code review for viewers, and stream overlay improvements"
-            , time = "Thu (tomorrow) 11am PDT / 5pm UTC"
+            { title = "Test-Driven Development with Elm"
+            , time = "Sat (tomorrow) 10am PDT / 4pm UTC"
             }
     , timer = Data.Timer.timer
     , charity = Just Charities.blackLivesMatter
-    , music = Just Music.adhesiveWombat
+    , music = Just Music.ericSkiff
     , links =
-        [ -- "https://refactoringui.com/book/"
-          --  "https://github.com/sdras/page-transitions-travelapp"
-          --, "https://css-tricks.com/animating-layouts-with-the-flip-technique/"
-          --, "https://package.elm-lang.org/packages/mdgriffith/elm-ui/latest/"
-          --, "https://package.elm-lang.org/packages/mdgriffith/elm-animator/latest/"
-          --  "https://avlive.gitlab.io/hafns"
-          --, "https://itch.io/jam/elm-game-jam-4"
-          --, "https://www.inkandswitch.com/local-first.html"
-          --, "https://elm-radio.com/episode/elm-parser/"
-          "https://itch.io/jam/elm-game-jam-4"
+        [-- "https://refactoringui.com/book/"
+         --  "https://github.com/sdras/page-transitions-travelapp"
+         --, "https://css-tricks.com/animating-layouts-with-the-flip-technique/"
+         --, "https://package.elm-lang.org/packages/mdgriffith/elm-ui/latest/"
+         --, "https://package.elm-lang.org/packages/mdgriffith/elm-animator/latest/"
+         --  "https://avlive.gitlab.io/hafns"
+         --, "https://itch.io/jam/elm-game-jam-4"
+         --, "https://www.inkandswitch.com/local-first.html"
+         --, "https://elm-radio.com/episode/elm-parser/"
+         --"https://itch.io/jam/elm-game-jam-4"
         ]
     }
 
