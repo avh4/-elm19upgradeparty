@@ -13,7 +13,13 @@ data : List Day
 data =
     [ { day = "Tue, July 14"
       , events =
-            [ MyEvent
+            [ OtherEvent
+                { time = "9:30am PDT"
+                , startHour = 9.5
+                , duration = 1.5
+                , text = "Sarah Drasner on Learn With Jason \"Make Animations Feel Pro\""
+                }
+            , MyEvent
                 { time = "11am PDT"
                 , time2 = " / 5pm UTC"
                 , startHour = 11
@@ -44,6 +50,20 @@ data =
                 , duration = 2
                 , title = "FLIP animations with elm-animator"
                 , description = "making a reusable module for arbitrary page transition animations"
+                }
+            , MyEvent
+                { time = "2pm PDT"
+                , time2 = " / 8pm UTC"
+                , startHour = 14
+                , duration = 1
+                , title = "stream overlays in Elm"
+                , description = ""
+                }
+            , OtherEvent
+                { time = "6pm EDT"
+                , startHour = 15
+                , duration = 2
+                , text = "ChaelCodes plays Exapunks"
                 }
             ]
       }
@@ -96,6 +116,9 @@ asString =
             case e of
                 MyEvent event ->
                     "- " ++ day.day ++ ", " ++ event.time ++ event.time2 ++ ": " ++ event.title ++ " — " ++ event.description
+
+                OtherEvent event ->
+                    "- " ++ day.day ++ ", " ++ event.time ++ ": " ++ event.text
     in
     "Upcoming stream schedule:\n"
         ++ (data
@@ -119,13 +142,19 @@ type Event
         , title : String
         , description : String
         }
+    | OtherEvent
+        { time : String
+        , startHour : Float
+        , duration : Float
+        , text : String
+        }
 
 
 viewDay : Day -> Element msg
 viewDay day =
     let
         dayWidth =
-            220
+            245
     in
     column
         [ width (px dayWidth)
@@ -147,14 +176,52 @@ viewDay day =
         ]
 
 
+hourSize =
+    98
+
+
 viewEvents : Day -> Element msg
 viewEvents day =
+    case List.map (viewEvent day) day.events of
+        [] ->
+            el
+                [ Font.color Palette.color.mainText
+                , alpha 0.4
+                , Font.size 20
+                , height (px <| hourSize * 5)
+                , width fill
+                ]
+                (paragraph
+                    [ centerX
+                    , centerY
+                    , Font.center
+                    ]
+                    [ text "No stream today" ]
+                )
+
+        first :: rest ->
+            List.foldl
+                (\next stack ->
+                    el
+                        [ width fill
+                        , behindContent stack
+                        ]
+                        next
+                )
+                first
+                rest
+
+
+viewEvent day e =
     let
         hourAtTop =
-            8.5
+            9.2
 
-        hourSize =
-            95
+        moveDownForStart startHour =
+            moveDown (hourSize * (startHour - hourAtTop))
+
+        heightForDuration duration =
+            height (px (round (hourSize * duration) - 10))
 
         isToday =
             day.day == "Fri, July 10"
@@ -172,71 +239,80 @@ viewEvents day =
                 , gradientAngle = degrees 140
                 }
     in
-    case day.events of
-        [] ->
+    case e of
+        MyEvent event ->
             el
-                [ Font.color Palette.color.mainText
-                , alpha 0.4
-                , Font.size 20
-                , height (px <| hourSize * 5)
+                [ Background.gradient
+                    { angle = theme.gradientAngle
+                    , steps =
+                        [ Palette.color.bgGradientBlue
+                        , Palette.color.bgGradientGreen
+                        ]
+                    }
+                , Font.color Palette.color.mainText
                 , width fill
+                , Border.rounded 11
+                , Border.color theme.borderColor
+                , Border.width 3
+                , padding 10
+                , moveDownForStart event.startHour
+                , heightForDuration event.duration
                 ]
-                (paragraph
-                    [ centerX
-                    , centerY
-                    , Font.center
+                (column
+                    [ spacing 7
                     ]
-                    [ text "No stream today" ]
+                    [ row
+                        [ Font.size 13
+                        ]
+                        [ el
+                            [ Font.extraBold
+                            , Font.color theme.startTimeColor
+                            ]
+                            (text event.time)
+                        , text event.time2
+                        ]
+                    , paragraph
+                        [ spacing 2
+                        , Font.size 22
+                        ]
+                        [ text event.title
+                        ]
+                    , paragraph
+                        [ spacing 1
+                        , Font.size 16
+                        , alpha 0.8
+                        ]
+                        [ text event.description
+                        ]
+                    ]
                 )
 
-        [ e ] ->
-            case e of
-                MyEvent event ->
-                    el
-                        [ Background.gradient
-                            { angle = theme.gradientAngle
-                            , steps =
-                                [ Palette.color.bgGradientBlue
-                                , Palette.color.bgGradientGreen
-                                ]
-                            }
-                        , Font.color Palette.color.mainText
-                        , width fill
-                        , Border.rounded 11
-                        , Border.color theme.borderColor
-                        , Border.width 3
-                        , padding 10
-                        , moveDown (hourSize * (event.startHour - hourAtTop))
-                        , height (px <| round <| hourSize * event.duration)
+        OtherEvent event ->
+            el
+                [ Font.color Palette.color.mainText
+                , width fill
+                , Border.rounded 11
+                , Border.color theme.borderColor
+                , Border.width 2
+                , padding 10
+                , moveDownForStart event.startHour
+                , heightForDuration event.duration
+                , alpha 0.7
+                ]
+                (column
+                    [ spacing 5
+                    ]
+                    [ el
+                        [ Font.size 13
+                        , Font.bold
                         ]
-                        (column
-                            [ spacing 7
-                            ]
-                            [ row
-                                [ Font.size 13
-                                ]
-                                [ el
-                                    [ Font.extraBold
-                                    , Font.color theme.startTimeColor
-                                    ]
-                                    (text event.time)
-                                , text event.time2
-                                ]
-                            , paragraph
-                                [ spacing 2
-                                , Font.size 22
-                                ]
-                                [ text event.title
-                                ]
-                            , paragraph
-                                [ spacing 1
-                                , Font.size 16
-                                , alpha 0.8
-                                ]
-                                [ text event.description
-                                ]
-                            ]
-                        )
-
-        _ ->
-            text "TODO: multiple streams in a day"
+                        (text event.time)
+                    , paragraph
+                        [ spacing 1
+                        , Font.size 14
+                        , alpha 0.8
+                        ]
+                        [ text event.text
+                        ]
+                    ]
+                )
