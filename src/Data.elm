@@ -12,41 +12,41 @@ import Time exposing (Weekday(..))
 
 data : Data
 data =
-    { title = "Casual Elm Friday"
-    , summary = Just "AMA, viewer code reviews, Elm Q&A, and working on my stream overlays"
-    , startAt = Time.millisToPosix 1594404390000
+    { title = "Test-Driven Development with Elm"
+    , summary = Just "continuing our “Recipe Science!” mobile-first webapp"
+    , startAt = Time.millisToPosix 1594491928000
     , goals = []
     , schedule =
-
         { past =
-            [ScheduleItem Nothing "code review of elm-cropper"
-                        ,ScheduleItem Nothing "check out wondible's labmda handler"
-            , ScheduleItem (Just "11:15am") "taking viewer code review requests — lmk in chat if you're interested"
-            , ScheduleItem (Just "(if time)") "improving my stream overlays"
-                                     ]
+            [ ScheduleItem (Just "10am PDT") "hey, how y'all doing?"
+            , ScheduleItem Nothing "back to coding, continuing our “Recipe Science!” mobile-first webapp, wherein we learn: can I still code after a 2-week break?"
+            , ScheduleItem Nothing "compare notes on learning about antiracism"
+            ]
         , upcoming =
-            [ ScheduleItem Nothing "AMA + Elm Q&A"
+            [ ScheduleItem Nothing "back to coding, more TDD: continuing our “Recipe Science!” mobile-first webapp; fixing our failing test for data persistence"
+            , ScheduleItem (Just "12:30") "🐐🐐 time to raid the goats! 🐐🐐"
             ]
         }
     , nextStream =
         Just
-            { title = "Test-Driven Development with Elm"
-            , time = "Sat (tomorrow) 10am PDT / 4pm UTC"
+            { title = "TBD, next week"
+            , time = "Follow on Twitter for announcements @avh4"
             }
     , timer = Data.Timer.timer
     , charity = Just Charities.blackLivesMatter
-    , music = Just Music.ericSkiff
+    , music = Just Music.adhesiveWombat
     , links =
-        [-- "https://refactoringui.com/book/"
-         --  "https://github.com/sdras/page-transitions-travelapp"
-         --, "https://css-tricks.com/animating-layouts-with-the-flip-technique/"
-         --, "https://package.elm-lang.org/packages/mdgriffith/elm-ui/latest/"
-         --, "https://package.elm-lang.org/packages/mdgriffith/elm-animator/latest/"
-         --  "https://avlive.gitlab.io/hafns"
-         --, "https://itch.io/jam/elm-game-jam-4"
-         --, "https://www.inkandswitch.com/local-first.html"
-         --, "https://elm-radio.com/episode/elm-parser/"
-         --"https://itch.io/jam/elm-game-jam-4"
+        [ -- "https://refactoringui.com/book/"
+          --  "https://github.com/sdras/page-transitions-travelapp"
+          --, "https://css-tricks.com/animating-layouts-with-the-flip-technique/"
+          --, "https://package.elm-lang.org/packages/mdgriffith/elm-ui/latest/"
+          --, "https://package.elm-lang.org/packages/mdgriffith/elm-animator/latest/"
+          --  "https://avlive.gitlab.io/hafns"
+          --, "https://itch.io/jam/elm-game-jam-4"
+          --, "https://www.inkandswitch.com/local-first.html"
+          --, "https://elm-radio.com/episode/elm-parser/"
+          --"https://itch.io/jam/elm-game-jam-4"
+          "https://www.sceneonradio.org/seeing-white/"
         ]
     }
 
